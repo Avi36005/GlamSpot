@@ -1,0 +1,426 @@
+{
+  "Looks Salon": {
+    "key": "Looks Salon",
+    "name": "Looks Unisex Salon",
+    "address": "G-3, Off Carter Rd, near Rizvi College, Shirley, Bandra West, Mumbai, Maharashtra 400050, India",
+    "lat": 19.066926,
+    "lng": 72.824206,
+    "rating": 4.6,
+    "phone": "085914 96785",
+    "photos": [
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3kiHG3zWb0E6lpwXouoZqGx0SSc85WLMGWbd1sn4pNsjEZfo0hvAgvW0QPfSxp7CUO3TVh4J8kbK6IjyoIA5sO_bsVupyWsxH-TjE8MSPCR8b6IwG-S6QUCpGJhOfRkwWnkz4gWvu4nz_xZLcntEmQPe-z34aU1n7Ng99T33q4ypNowyYuiv5h_cFIK85dkq7MXLrRXvUanWRPjwidKjtbOcpUVigvP1yrZQTJojITkVvgs798jqDDwB9tDgc0pAb_ku3keRladMB5_kgkeTTEEXJR2bVqivQq9XMrEpfRomGsrtgTbZZfGrPeb9P4VUbSEktJ9iv4T4JUTQmhzFHZ7lGyXV4-3OeYSp4VoDIAI8zdadH4DB3q16yCPZKKssOxNQpmDWmgG1raIwTaIo4ru6DY5NYHVNt34jt-Lpph0Gas&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3nV8sOJ0EdYitgfuLfa66dzL4x_ck3qxcyBvORue_8oADCHDNh6nLeECMZJmav_ndbVoLUAY-5dAko0Y8VJrFQ1Jz3L7hvEdhIOlwg5RSLzG3Fk45Q5m-pSYtAL3iSEmVzMncz2OH4eJaSHRh3huapAhcbt-KtHcnEwJLKk_bIZCrPmmd54KIKbgJOXJ-C9tNxjvSupVmTey8xsf4bW7xqC3YSzuDiaoRZws9ACQfuUTfkpeZE3tqnWtem4EK3Axz8_i6nR0AJPGRWxFgxkV8C_qQWE3cg9zBPysb_IAgQ83QwympUIzjg75Zd6fTdU85jYfLVCNcz7s2fHo7-4pB2-aauTcqueYAXYlkKTMB0HaX18TutvsRwd__BmXJJ_PpHW6RlcUKaOdREvW4Q-EhcjE2GfnsYQRerXvwEDhzZRnN414S8a5vdzIeI4VQ&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3kz8jw3rL7QJchC0g8EurPKVGCFnsv2tQKUsO2K7dgGgfBeUt7OBpGvguEBO3P89WbgwcYkJlyjhVMr5dt7qVtCSdytf9i3UzkxGh3uNvSnLhKjeTHOZE34tLWArcAbS_lnrda32HxygETvUTuXU9P_Djr_bv934XlVBnLMc5HfzhmqrqStSsJedH5owWak2pJsvWeqYAXC2DGaCEYwPwJI1LYyb6pdAAaXR-gr1sjmUehVmOdPOpbhQlzkNmeTsJiA1PCICDwz1I72v_Dr4Fs3Cr91kf4SA4vadsLkp_lu59Ic6SUN6B7VlKsjp6_dmY01WVXI6MsOB3Oh5O8up-IMIZlL-Lgfd-_j5BXfZRVs0-4a2qp96XNXMmyu2g5M0BLyNWdwYuRHDwUu-ENuW4z4G2K3hzZBlwYVoNIXUFPFOZ2EQmMPqrgRN65FmQ&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3nsI2Fb2WRsET6vL4dhWGUQSV_CEZMCJ2vIgCdEprTrAx9f_PfbbV517pa_WzWaVBQk8LqxSpMuoL0ViK2mSRBAXa4p1EW_l8fsjm-K-9ul9Wt3MJqwZ3g4GKnphda-X4Usagl28S5_tB3xtBQd44xaZgs0-E4nOpshqib3B53AoGMNT54fLj_Yfo8QRrJKxLUernih1kw-0q5RUIXh5sKycScu1yPvBebRNlKSNfFKb2HDqcIDhbLpd6FOe9hJ5BTb59o6e0UF7ceSM_B69y0SmzAPBrNDJi0NgSuEFavDswkjPleOMZLsXOc1ELHj_SnNU3DnArb85Ljct_JYsmoy6IcmfoDeHqTTKXhEC8xYqEB-xLNMN-M1Ys9Gi0jE21v4Ihz9UK5hWHNdkb6ldZ1bCDI83ClHfslolXuii9-qS-LCtrJEzM0BroTVQhI4&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3kDG5GOeA-OF7V1nkqi3U1Ij0Gttl5Ig8W-A3ue3o6RN-oxwgSWIK6Jf9-7nQ3Y6VucotuBZjPcm8VLz0OwtWVpijb6bAVN98qoJMPfAN-3X3aN_r9tQTF050-jYrh-bd7Rw2gQ5adX9CEG29uen9Rk7h6XmMesifJC1NhcDpermyUlAB9nt3ZRZN7miPZotZY-y9XyZlQy4X_ySKIY4pPTvSSRD9yx3l0L6HACfIM_t92nEXqtBerl-QsKzrb1QiJ2oUGv4Sgso-z_214SJQcLQKJ3aWUAu-Mrfj0v7YrKCTPveMk2CNdyJh_kbct35dGsQ-9Y4ACWYk8Yypo81zTDCoh4uIr0ghs32XFE6xO0MTeyZ1aMa0bM0Bbakhlsw1Hmvkk_vZ9fFAxl2-0dJYrDBGhCpLVxBPwqTsyiqXDjdes7zQoWExz4a4U3DcRT&key=__MAPS_API_KEY__"
+    ],
+    "reviews": [
+      {
+        "author": "Adel Mahoney",
+        "rating": 5,
+        "comment": "Today I received a wonderful haircut and colouring by a lovely guy called Sharoo. The salon is number one. The staff are very friendly and they know what they’re doing. You receive a good service highly recommended.",
+        "verified": true,
+        "time": 1712214165
+      },
+      {
+        "author": "Honey Dcosta",
+        "rating": 5,
+        "comment": "It was very good  experience with looks salon. The staff is really very friendly and polite. And the service is excellent.",
+        "verified": true,
+        "time": 1721571323
+      },
+      {
+        "author": "MAULYCULE",
+        "rating": 1,
+        "comment": "Extremely rude staff (screaming angry lady with an unapologetic attitude and no manners).Very disappointing especially for female services . Third bad experience and won't be visiting again. Zero stars.",
+        "verified": true,
+        "time": 1731695043
+      },
+      {
+        "author": "Ashwin Pandey",
+        "rating": 5,
+        "comment": "Very good salon in bandra west. Nice staff and very good service. They also provide beauty parlor service.",
+        "verified": true,
+        "time": 1712237935
+      },
+      {
+        "author": "Jagruti Patil",
+        "rating": 5,
+        "comment": "Wonderful service by all staff love the vibe of salon\nThanks looks salone 😘❣️",
+        "verified": true,
+        "time": 1711176088
+      }
+    ]
+  },
+  "Naturals Hair & Beauty": {
+    "key": "Naturals Hair & Beauty",
+    "name": "Geetanjali Salon",
+    "address": "GF, Wood Rose Apartment Chs Ltd., Swami Samarth Nagar, Lokhandwala Complex, Andheri West, W, Mumbai, Maharashtra 400053, India",
+    "lat": 19.146812,
+    "lng": 72.82350269999999,
+    "rating": 4.7,
+    "phone": "091363 54040",
+    "photos": [
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3m0u9wW1cW8vzh45TI-xjQ4rCHZd9Mh3woBirEjD1rQzaOlPTe7LKOIsMMT4EDVD-Ayt-0cxiGccOXXZSOHqAL-Bhh2J2ljSa_Kcw_SmoKqXp5lCILIlKa0Bclvz7LrRcjTyFjyGkjioslny9IWZKycYJ3vt7KZtTQXkhuYKwYwblISFDVDF5kt1QqIG9-_H8aDfGCLY4bbMKBZJb25xXXuQyqDtp6Fb33sLtMLcjgTomqM_xlXsL6sDLC82jDspnSlwssrmpfugO3nUGqvb8IsobchCh1-T5AVYVvrsLgMyziIJROfZjUHKhagYs5FnsE-_KlpnfKV5ltUyBl7dl9-N63YldNCAGIX9l4VdHZjZ2OzaQAySU4vZElkjSZK_63zpX3kUlcRw1pT_U-QyeLdWz8HrpkOwRbOmohOI2FcVEvM&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3nEZLtbjTu6wD4liJpJqXmHcgj4bpd9vSXknMJHSAOB7tysiFDWOko0emExAv0JkNdzRMt3PSQHz0oOBxJcifFSOf3HQR9ErK2ZmghYfzlTLrXVy66DwkfDlV5Nk_QAA-ZCL4DRTWL9wM8wGAFnMwwIB9g0P1qxwMU6It2Lx2PTV7LsNLsR0FZYLnaqiiygDJLHFkGETVwOqXVlOzs9gKaqPpGczdSfYsJ2CL2i4UxTx_vOqwM4KfKLfjCKsT2plvNklVizbLsoczfWNXSj85BvcmajemPZkOCADDuo-RoU2L6bFA5tFR8uA4hK_104vu5XiiV6OTQgGSI7qjTSUpM5wF35pqY27-MOj8H6tpNyOYWSGL3mtS0qRDnQim7G87AFH87Ur7Se4095dXvtysDQbbJTNjzOK2xk7ftp_djuoQ&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3lzNd4W7vHhRvdDllONl7KWGNNdmQI0hj-760ts5SvXrCLUUqBMjYH7FCQSHGmmhrnqdnCuFh8oRcRaQzmF7bUJSgXL5UvP4eo8KSknP8PtceOr7tfKY_0T6T6UB9LzF4jeKs3nOfSMWHuTAE5CpAVErzYHzwAC4Q4IDfwyO-Mao2rEGSZgFbz8_BSFQF1F9E-ngE1EHBYd7Occ--FL2IoC1EtEyNHSn60lCzWY1OmG1V68eyGCQOHCZyVW4XTFt-Z-4N_TH8JvpTPBsIXy4zs_7UjvnXzlIXcP3vHJA5UKA0t2vZIMpahZKQ7uwUtc3hnKenhbBhg4fpVUt0TCcpZajXqB8oMBzq5a078oH4X7eM_1uDzRFxBDGAz0Mfy5BiUdJNIrKDB8Lez-lFDVvMpMR0hIBTs0lcTfIbuZq1H8KfPK&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3nI5kOM8rbqnxemnwhWltokUkmPcbBt7fY5aZG5F_LSiStyBuBFUIg1pNgTl4VR2nSsMT8U1Krm_tAlAZBEj9p9G4-9gFz0GJRnEfoL7CXgZYsLISeeADXb2QzVEkIoDcDgG2JC3PUhKdCFTvzQhaxtC4suFYWeEoYpG_w4APV-YTHG7c9oSoWsjmtYec5U48fTVtbGpPgBaAqg-n-TEi2s3zK3pi8qhy1blWARGKGv_rvefnLMd3OHgm93KwkjsiSbTuBdpeKOnehSVEj9eml7TvYLkqHf-DTa3Zhm5KVXjjtRuxPu8LGR_MwMLnEA3GbT4MxKKwDzGU7z3htxRCaa9gBcwo0R_LVcQ2fRYCZopxVDSlpOFXAJVEFikYMk9f9L_hB5CQzQY1BWN8BiLB4vq9uQcYbCo6-JUbigKzoe9Hwf&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3lAR3HRKvp23NWWEMsCVzZmN69NseYdUlwV1Xi878aVjKmzJZEliH5-9uzPfCZTWJTbmmGlidol2znWwaY5ez5mzYun5eabEodrKYEvHR7nfd-0NhKBTGEYDCRNBNHAocnaGfCyMN1q5KmLRzRC8ssEPTL5_cpSaBdyoxDKYse4aO6GsI55xXlH7QYCWQzmRb85x-NkcuH8kGiD1_iLmvf2q63lubyl76V7JHV2Q5lSOruZx9dTaaYj4MYNJkSKhKYk9Si_DjuiAs3olI06OA6uUEFQUjEg5lZDWv4ecgPgO_rPaV-BNWjCKqYwGLmhbzq1k6HzaPY6iJJ01fSBbJ-JjL2yQGgFyh2zJsrQYFchw5xQ63A9dCEvsAg2ZU-Uwz-jGGFJCL-h5k0G72-rK858kxdciB7BdqVSjXOO2zVJjHfQfAXZ0gEMzPe0ksY7&key=__MAPS_API_KEY__"
+    ],
+    "reviews": [
+      {
+        "author": "Vidushi kamani",
+        "rating": 5,
+        "comment": "I have been loyal to one salon for years for all my hair services, but one experience can truly change your mind—and that’s exactly what happened at Geetanjali Salon. Their hair color service completely won me over and has made me choose this place forever.\n\nThe quality of service is outstanding, and a special mention to their Creative Head, Zufi—she is absolutely amazing. Polite, professional, and extremely knowledgeable about her craft. You ask, and she delivers exactly what you envision (often even better!).\n\nHighly recommend Geetanjali Salon for anyone looking for expertise, creativity, and consistently great results.",
+        "verified": true,
+        "time": 1768349400
+      },
+      {
+        "author": "Rameeza Lambey",
+        "rating": 5,
+        "comment": "Went for hair colour and had a fabulous experience. Zufi is a very professional, hard working and a polite person. She explained me the entire process and how the old colour could be corrected with the new highlights. I would highly recommend this salon.",
+        "verified": true,
+        "time": 1769592870
+      },
+      {
+        "author": "nitu singh",
+        "rating": 5,
+        "comment": "Had an amazing experience with Asma! Absolutely loved her services for hair spa and haircut. She was very professional, patient, and understood exactly what would suit me best. My hair feels so soft, healthy, and beautifully styled now — she truly made me love my hair again! Highly recommend her services.",
+        "verified": true,
+        "time": 1779011113
+      },
+      {
+        "author": "Surbhi Saboo",
+        "rating": 5,
+        "comment": "I am very loyal to one of the hair stylist in different salon in Lokhandwala but because of some medical issues to the stylist he couldn’t help me. Then after a lot of review I went to Geetanjali and glad I got Shiraj who helped me with the hair… he was fantastic. So happy with the hair cut and the way he helped me with the hair.\nThank you Shiraj.",
+        "verified": true,
+        "time": 1769594377
+      },
+      {
+        "author": "Kshitij Saxena",
+        "rating": 5,
+        "comment": "I have recently shifted to Mumbai and I am glad to have had my hair cut at Geetanjali salon in Lokhandwala.\n\nSiraj is my favourite. He understands my hair and cuts them exactly how I want them to.\n\nAlso Abhay, the new salon manager is very warm and welcoming. His hospitality is amazing.\n\nBig thanks and appreciation for both Siraj and Abhay.",
+        "verified": true,
+        "time": 1773476508
+      }
+    ]
+  },
+  "Jean-Claude Biguine": {
+    "key": "Jean-Claude Biguine",
+    "name": "Jean-Claude Biguine Salon & Spa, Juhu",
+    "address": "Eden Square (Former HSBC Bldg 3rd Floor, 10th Rd, Sainath Nagar, MHADA Colony, Juhu, Mumbai, Maharashtra 400049, India",
+    "lat": 19.1138597,
+    "lng": 72.82974329999999,
+    "rating": 4.8,
+    "phone": "075066 61083",
+    "photos": [
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3l73C3EchD1leLzs0g0-eg5raADFcyB36DmsMCUkkaDhk4UUmKi0jhO1a-qdbZgodmJOFxCdBgPzT3V9RWTIdHy9nfExHnpiSbeq9ipAcmROOL6Uw3z4sg5sQjWLvwQ0DijmFc5x5f2ZFqR89s6kShBhXdLaT7loeeL_oHfclNViCYxf4Fjx_3CzI5vc_ZSFvHKRyUG9OSC3FSUeDrx-6SG4JrfuQYg3TIvS95XRTAiNlLXhDP8cHQV0uf5fzWw6-xcZnno1hrZV4KJ9kKFu0zZbmDqHmA5qaBkxzEo8pLDJCbckwVWbAuZ5f0ovd4TYkoDrbaeXTkxInQGfVSEA0qbMMsMxms-yTPJUBtAx942dGUljScGG078vn0Tig8fs-FkXI4BFvrhCJf1QTz5K8xeQWb304XKOsSdG9In2vghG-zy2Bk0qKnt9hD2vw&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3kDA6Qgv_IP3iUUkWJnHPnk9gUXf9URu9DOQYVHk4_Fh-xJ8H_lBRDhgjJZUPSmB5WC4yOnApJLkG1owVnVhZGVL74crlakm9pWH18FvTXEqTtQKLWVa_bY2wFkB4DIvjGyygutVolLsE8bbG3L0Mu0lVF-rB0S5onqC3TvEaRcHStBKwjCFqvYuq_xHiKSwevj-gZ-6DnFTPYBlbAfc_uyy94pyUnrbrnl2K5TgQxAL5hxzfEAj7icSPoZuRXIIm0x_qiVmxGGE71-LC9shTvUHKXLZPWhiERyLaozJ7PlKLhUswxOnUc_fuEp0-P38_20c_18HeYgjUnepos6RRrPi0VdFse5DnbfKi0sJZ2FGW5O9GqFhBc7hvwM7AR8AVKnNoYlklIFw8EB6Ue78a1oDKKc7LX8v10dlykZ2arzYebjlb8v7gJhMmqd08D_&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3mzE6tKeL5pKjXhcImu_ekJ9JN34X0RFpNLDmgGfYu1wryMYAeDuadzRHR-FT71rsA9hqdgcMhf_dbPxNSHcuCVZ_qfDflrIQrOXnxbXrS7sJgcwGed79QOsbDyzVSd4D1sKBEZuURHGy0Uk_oMXNcBUh19DqD-2V3jCs7Ft20MPWlAY-lbFtQXdi9S1U6wK023wydVBO3GQ8N9sJOmSvCTmo3bu8ZVG4aLaBPj9oVIWIqAdfiW-q19SxDHdTA6ihG_ffRX0pA2h7LI3nuPQY2JjOUP7DLNZLhctroPvRPM7F5CvyP5IdqGDvyMkXf4opkPcH0s4OsOD2GFJq68DUmRMFb5vPLrdR7IqJ20Yfz7zZEUYuVi-hCoW4G9UXLoD76xdmDPV9xKQglq7gRySQc53TA4zz5rgdCD6ioni2Q5dA&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3l4idmGyFukEaI2-iKZ47nUIyQWeYloF8rlow-oiXt74s1lGA0OaKVnqh4fr9CQ5fBPRKM7G6EAY4_MdL-mMwrslXXQ1hKlcHE6a9-WMCSgISvf_7qUnxYrC3PvpAb1j8K9eOlPk799KKGyIgJOcWquLIaB0WLb_oD5-xb-qLR9-J6ZA3CSjOy5lpdhkqDJjUeM1QOiOEX5OwoI73FS1dgJjlAGReaNZ5Ng1uwnI-uBIKlZZFynV2QT2fnBYClnhnma4TpYhY-BsYHgthT01IkZqDFaIgX6UOah6V1jh_T-gHis6aGKLtPwGQJ5oZZ67J1tfl9_SN1rLOA_BKpKbTX2eAPrd576RvO5CPretLHrPCiuwefsXAIVoIftUpYJTPn4UOeb8MjJFZ6P38exeGOAFAMZURpp_K2fkpkNlTqPK6ol&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3lwozf5jirCm2s1aqrfnzZDthUbSqrDwMvtmJxp53AOLv5fsfXbbziJfoJ8Eoz419UF8lShhJFlX4kU1UOIpCo3nCMsxswMuXLCg1V_-ckgkAONynylujdKMp_HoRGExR-w57gmLwVoav4I9BIFJ04Vb-XTsRUZ48KoSM74VzPQkkopXIbauaEMGdKhFGYnNclUIOPEbPDFLFP2R6lHqpsClUvATeCBEVENa6QMKfDVfe1xlg1gQkdZRsuORhqheYNz9e6Af6dnviZsA2vMhakRQB0L3xzoTW2nGpvnnVkcffrooBStnq9i7wyo1ysaczRM5566N1xGkPRZ3FUDim3-b1BeNjQ6xG8kuEIrHKQS7rU85cy_UGU16CfmYyrrzxzVc8YvkqsFIG19aaGlUDjRIF_PgWUXJ1fbORCh4eb_SdlV01_htTFh6wiEUItY&key=__MAPS_API_KEY__"
+    ],
+    "reviews": [
+      {
+        "author": "Trupti Varma",
+        "rating": 5,
+        "comment": "Glad I got Gel Nailart done from Kiran for a close friend destination wedding.\n\nVery happy with her work, attitude to deliver on idea & quality focus. She kept same focus to detail for 4 long hours. Thk u",
+        "verified": true,
+        "time": 1779092210
+      },
+      {
+        "author": "Farzeen Balsara",
+        "rating": 5,
+        "comment": "Amir shaikh and Sharukh are really good at their job, I did a blow dry and hair set for my mom, highly recommended, they are really skilled professionals",
+        "verified": true,
+        "time": 1766311396
+      },
+      {
+        "author": "Yukta Chawla",
+        "rating": 5,
+        "comment": "Absolutely loved my experience! Farman was also incredibly polite, patient, and very talented, the hair color turned out exactly how I had imagined, the shade was perfect and suited me so well. The haircut was also done beautifully, exactly what I had in mind. You can really tell they care about their work and their clients. Highly recommend!",
+        "verified": true,
+        "time": 1778768291
+      },
+      {
+        "author": "Blessed Blessed-",
+        "rating": 5,
+        "comment": "I had an amazing experience with David at Jeanne Claude, Juhu! He is incredibly talented and truly knows his work. I got botoliss hair smoothing and hair highlights done, and the results were perfect. As soon as I explained what I wanted, he understood right away and delivered exactly that — even better than I imagined!\n\nDavid is patient, professional, and genuinely kind. If you’re looking for someone who listens and gives exceptional results, I highly recommend him. Absolutely amazing stylist! 💯✨",
+        "verified": true,
+        "time": 1765485885
+      },
+      {
+        "author": "Jyoti Nisha",
+        "rating": 5,
+        "comment": "Amir Khan have me a fabulous haircut. Graduated bob is a tough style and I am very satisfied and happy with the result. Thank you so much!! Gonna recommend him to many people!  Best only!! ♥️♥️♥️🌸🌸",
+        "verified": true,
+        "time": 1770984875
+      }
+    ]
+  },
+  "YLG Salon": {
+    "key": "YLG Salon",
+    "name": "Enrich Salon Delphi Powai",
+    "address": "Ground Floor, Delphi A Wing, G-3, Orchard Ave, Hiranandani Gardens, Panchkutir Ganesh Nagar, Powai, Mumbai, Maharashtra 400076, India",
+    "lat": 19.1205066,
+    "lng": 72.90928140000001,
+    "rating": 4.3,
+    "phone": "088792 83000",
+    "photos": [
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3mLAiAubpYYARmNYAWMg_VhV2LVLMe4BUxNNoIQ7uR1UGGhMzEXVyZuty9cGAfa-BSZhoc3dasJ8XEt9pIqzANzRsb8UmFSSOf5xbb1zIeN7CSp4MVdaMhDR-BuJmwT36rOJxngksxnCzi4iE0TrDKotK03I2oXNJKYgDVr9jp71riRkIy66w91uV41BRWUTFOq9WOuW3_hg9edveb_-MAz-pqJk81KXvkZXHXJ9bi5kF8ibOk5gCNDCwLgdLBynYuwXx1KjsxYfCjkaHkigxfixEm561Un1Y4VrstWiQEyo4VRaf4G5w_TWueGFy55ImGwnJ7VjADq0iE3FllZKXdcX2on824zQyUgeTVeQuhzX81LIL1bW-YhBVVQn-Em8lhOgZCYuidhm3UwuvASQQXpZXYexed_98g5jVQ2spN9htTS&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3kuVyE3rOJuQ3_PQ1bF21pRVzetmp2vQP6AZDSmKW--iEeNy0UWks_EHPIvkCUoqpKZ8jZuLvlPb5uXc8G2hXun5VfL-YOr5P1U8Hl8zSf6eUQXGtcNZhML8XkOf6-kUP5r9NfLeEc_uZHqn9hdD2T2fUZkjFuft5IQHkC9d4UXXPWeiI_dfILSOL3tTN9SnkpGkF6TUtGLlepYDde7FLrg5wXhjBIM4vHhB_Dz69o1CLat5LEWGr38-Pw2NILIuZ--TevZ_UiMcED-EF7vF4CbacjkF0wRNPybKhEcONxZ-R9D_AqlUs_QxEL2YThEJZPGFzNkCPfdj3qfIOHw3GZ5StxfVS65MstNezOMy13xY9qq-DD3pkN30XHZk7yYN9qv4DQexEZmcQRJbGbrCoA83yvvVQ8ZWOS0qb5cQMWnrg&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3lPzXp77GRCMAACC1KO_HdSf3WpY85YM6CTinMN6Jn8ffLGqupmJ5tMUhnEbikkj_8pkq6o0_GFqvgLOU2loP0wQi-8sDIczOXtsFLFAufY98h493Sc0E1wyA_CSG1ajLP85qGhn2XELwwdspZwb7X7ZBnXh7Og_XhsZvKWPzsACUDdaXp5Cmnn5Upd1uQFpECVs6aLMmx_9in5wdGyIHhaaxuztuDbHMdZFFis8oyq0e9aZmCzAybqPWTwiMUmejOhcgZYzKw9WulX-_Ek40zl-TiibbKcGNp_RncMyYLe_gyaVej9rYf2uytlApDqkXrkeceVdgwDD-1kk_TOKR6deK-n88YvTzWWZDDdAaA81W3HBkmEdpEu693n5YiNP3sKxNDMIjHP1-Z1-8X3pXuZCeiD2h6rX2EVQKbED18&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3kCEzPFSd8m-S6T8NLCgHH1RAyRKLSNcdq6iLm855nxiFIC8IJJbvpfdl9w5goaEX4PDiTm1v9UbSQIxCmGf2jWoDNtzUYMedtICM9hECyHBK4AaWgG71QH0FcGk7IM2Hy1kQf9_2RCgGMfD1m87OIuhcYLCsiI3xRgK2Nf42ND3ovB5nmKKBuvBbur8K5Uq8rRo0x2DvipQXBMcU3uAuDO9EkWPS5edd7f33NBULRvVeML65r5DarmoVTTefvwEYrLk5J-XlhgAAQn4gQRQESDmJ-VRKDDqzgRtOq2g00X5pCSOgZWCcvVO_ChrrFuFVpeEG5R5ivFliMHsFDW1U_8gwl1iyOzP3cWByMxB-KpTNV_oOBVKUNs6kECozX1wtJhNn3kKBHc_vq3t8Cjj_3uO78kLBbOGwDpOPLTIwMf3z4&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3lHPyMKiaebwLH4SOZA79hTCuNbKvuDDgeWvdhoG9JuKnILS4_6Nqf_3ADEofSYg6MbwSilHXcTUlnztoOwtptDB5dcEhhSgECLmfLUu_wRl7-n0Qky4mPIMv5QJtqFpVQCfzHv4GpNPEJZ7jExfbJEyc2Cg2zzSGi-siX_HpMnClkK2MWysz9gLJpnW6aXhrZUWStUhKQTXza-jb5d7TBuOyYhp2XucmEUFfr56T3gAxUjiAac3TzXkDTKI_vsvQVHxA41_pXEswqZZtsiOhRdxJXxaeCU8xBXorOQRikt_8j19XfkvBe-2TzmfAEPcxJirhVE7Bx5LTnPpqNYN2BH-pb7IPxklknyMn8VmWkFII3egdt9Wy1N0SdAr8vgxGxQ04lUwJuBwPG6WuoBRQLRMW52zlXSkfgfvOzMpxA&key=__MAPS_API_KEY__"
+    ],
+    "reviews": [
+      {
+        "author": "Drashti Shah",
+        "rating": 1,
+        "comment": "Went with my mom for the first time to get their basic mani-pedi and it was underwhelming to say the least.\n\nBoth the services combined took only 45 minutes? I don’t understand how that’s possible! It’s not like there were 2 people looking after us. Just one technician, who took 45 minutes for manicure and padicure. And there was 0 massage. They put the cream, let it be for 5 minutes and then wasted it off.\n\nThey tried upselling the services, making faces after looking at my mom’s feet as if she needs some kind of saving that their service can do!\n\nThe nail polish quality is so bad. It clipped almost immediately. And to think that they use the same brand for gel polish is applauding.\n\nSangeeta for facial seems good. Jaideep is okay for mani-pedi.\n\nThe staff who looks after selling you cosmetics is so poor. They get a 1/10 from my side.\n\nNever stepping my foot in any of the Enrich salons ever again",
+        "verified": true,
+        "time": 1763887231
+      },
+      {
+        "author": "Akshita Mittal",
+        "rating": 5,
+        "comment": "Excellent experience!! I had never had my hair colored before, so obviously I was a bit sceptical; but Ashu took time and answered all my questions and very patiently understood my requirements. The end result was not only perfectly aligned with what I imagined, but actually surpassed my expectations! It was a very tricky hairstyle, but Ashu did it effortlessly. I am truly happy with my hairstyle, and would recommend Enrich to anyone who wants any hair treatment done. Had lots of fun!",
+        "verified": true,
+        "time": 1777748736
+      },
+      {
+        "author": "trupty anjara",
+        "rating": 1,
+        "comment": "Went for the first time here.. for a regular hair spa.. made a mistake of telling them that I gotta rush back.. going by the brand i assumed the Technicians will be equally trained.. here's the part - the technician started the pre-wash at 12:45 and the after wash was done at 01:14.. he seemed like a first timer.. it seems a kerastase spa is only for 30mins including a massage of 10mins.. maybe I'm a newbie!! Not at all recommended..!!",
+        "verified": true,
+        "time": 1776152987
+      },
+      {
+        "author": "Deepika Chauhan707",
+        "rating": 1,
+        "comment": "Hi Team,\n\nI am writing to share my feedback regarding my recent visit to Enrich salon Delphi powai.\n\nUnfortunately, I was quite disappointed with the overall experience. The staff member who assisted me had a very negative attitude throughout the service. He made several unpleasant remarks about my hair, which made me uncomfortable and unwelcome. As a customer, I expect a respectful and professional approach, which was clearly lacking.\n\nI had opted for a luxury hair wash and haircut, but the entire service was completed in approximately 15 minutes, which did not reflect the quality or value promised. Additionally, despite having a confirmed appointment, I had to wait nearly 30 minutes due to issues with checking the booking in the system. This delay could have been handled more efficiently.\n\nI also felt that the staff’s behavior toward me was influenced by the fact that I was using a “buy 1 get 1” offer. It seemed as though the service was being treated as if it were free, which is not acceptable. Every customer deserves the same level of service regardless of any promotional offer.\n\nSince this was my first visit, I had higher expectations, and unfortunately, the experience did not meet them. First impressions matter, and this visit was not satisfactory.\n\nI hope you will take this feedback seriously and work on improving customer experience and service quality.\n\nThank you.\n\nRegards,\nDeepika Chauhan",
+        "verified": true,
+        "time": 1776680763
+      },
+      {
+        "author": "Monica Tanwar",
+        "rating": 4,
+        "comment": "Overall, the service is good. I have been taking services from Enrich for more than 10 years. The best part is their hygiene, though it can still be improved.\nCurrently, I am availing hair services from Mr. Asif at the Powai branch, Mumbai. He is highly skilled and has excellent expertise in his profession. He is very thorough and detailed in the services he provides.",
+        "verified": true,
+        "time": 1769449705
+      }
+    ]
+  },
+  "Enrich Salon": {
+    "key": "Enrich Salon",
+    "name": "Enrich Salon Lamington Road Navjivan Society",
+    "address": "Shop No 7 & 8, Navjivan Commercial Premises, Lamington Rd, Navjeevan Society, Dalal Estate, Mumbai Central, Mumbai, Maharashtra 400008, India",
+    "lat": 18.965939,
+    "lng": 72.8195454,
+    "rating": 4.6,
+    "phone": "088796 17784",
+    "photos": [
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3np5dnQ6bqOG5fCh-e195nm5Iocu28T982LAbMBr74sOqafzeu3Af-9KGORQueOjC2huNCtogdYgtCrvPipo7FAKs1btWMxVQ5ZC0tifQbpT-YwIp4NkoXwgQhmT_9p8OkwqydF6MSxsI4WGiTyO8ewSGBVtgraZ7rqWbdV-lY-t-YJXcb7wpGIg3QExqp7Zzvcs1Rf_3ikVEZbwXRwi-RhD9MGGVcnPontzrhUkD_HE8JzCIitRqDlDImE21BwsERghCGcAUPw5x1ofIYMuDzZ_hfGOXdVDAtpB9ExJEFarvN9VcW-m1DkrtJvmQ6PHNc6OXXPxwphO_T8msDSPP0BU4EpmrhF49nIu3WVVbwmRyt3iOnaQDnVzu4BAyaU4zPNXmLyrJ2miFlpz9uxqaYCZwTQps4B3NhTQvjJA5542g&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3lSDGJUbtGC8OBcE7h8mBy6Zkf0Xw4q0N7wuuf_LZ7y8tH6Y2zmgOFXykFFy0cxcfVgstCdigJzwbQIisgiMeGu21Itsrfa07m2VdNlTHtSxzs-0LxxBNSZEZH7sthZCg9tQf3K9Oj1QxMhB1WsPi9OO4o98_tre-kuA_7-Ygy0nNFCWHz90KYfgjf7ZRKvUnrYgIFYnpBpWWuBhEZZ_XZY6fJP3uMrS5tSj_Qwizc4BOOshzp4nKDK9ATuttaBIHxKBeetU8dfZgfJzzQ49wwMnedWYW0PxQp8KYJ2TmjvhxTDQDs934qvoMPQ-5PgoLkvnDfnG2L11j8vgGUMaBqdWWTYSvIY1mjbs84l6BFQ3F2L28SGR_NAUO_uTB5rexaEarLKoVutegEY6ciQHRruUkSDdwwUIB9G5ul7pi1Wiw&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3lJMWWpMTuByuIkPN1f64pbSQoWfrEkXa4KZHvg3nTafJBbJVWVyZoEuRyHl98paq5t8bHltk31gfQ1W4Qt7N5CRjT4PfREM5BHz7XJVvE7Vg7iP_Lbxq6xcUugpPMVbRBHE3_DvoI-o4PIJ_zoE0hCSZprgu6IZ9BWt4ObSzXFb6lMbKOfixinbHinxTVyUkVj6fod2dLZpIPeZlOHoRLB5t1MewJXofUO_Sf2PE24rJ2ypHBP1Kfs58fvVj9TXc5NNPqnbOduRTBa9mHRNWDUkXg-udRHvoIboqtJWR_q__FNoA4O6csIxIltIGePt-0bZLWFW2OkifMNEsNsfxt1i9F1uEz37i7nw_sqNscndyM8oxY_UwUC5Zndgu7HtCAopDb-tFE4ufUYm-VS5xJdGBGXuJNEx0iPHhF6w5F44PWo&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3kPF0tA-dqx9dB38czge3KnYZMSoHjnh1a6aaVUlorR9TckRyNDSxMlefvU2zD_mNQjVz9S3AksrCN0uurf-vjrhvBlyraF8-BquCmB7TsjkK-abVU8aEC6sMZ9g2HzS_rxnBU4UNy8ytgRLie5-9tLLY0i6BLbv55ikKWDR976V-gbxgx5Xg52LNGQGHqdwm7rc220rio0ndpUglughUfJr3y8Sv6JhFvc-CqI7HuoBPHdewFe7b3GHcfSVE_gqPaz6FxgwUM19QQu07e8Pb7FszlV8NA9TSBiJecVp8tLCbDgFDYqUUKQUYTD-rECw-G-gGHFhH2JHywg-eyHXwSCQQ6COOQf46jhajXdX2HGlMJrpTN4QIGYAd5lq9RmaX63ncCvtBzXKmpEtUHJNLrhUsty9iz3TRyzEvtlmeL9kA&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3nUMCcgqgYmhF9uJzu3qVX8FZCuTnoZm4gtd_TwPVIAFxr_LKybjpSpncdBo9uil1S4zHqECZnO79wxowXRtW48MSt7umcmAJ2Ikk_ZePO2lnnM9mBb-vbKXW83ARkkosuarOEiNeThxWgdRaPoXlnp5GnXfBrTONNyKor3jjY5kc3GoweV0PfotgBYltq0EyyH0pJeMkNXZJvPjZUYWG-s_94M-vm7b94dtuIRIVlTF5bl6uAIW-XtRT6qZRDcxZtdoyQtd9Kqi1OEV_MldPfFjWfmG1hb2CY-Ais-PWPh6rKuYwFcbwbU3PG9q_qmlZkHfYSO8M0vt_3NUKevIyO8i99QlGv0OabcX_5oKo-huJ9h6AKfwa1Y1M3g6qFl_LruV5yFe-MIclSBniQ3Ejf4eLq0tY4JJKPgDE_CtkhFyWUttsBNXrbcOO6lAVu1&key=__MAPS_API_KEY__"
+    ],
+    "reviews": [
+      {
+        "author": "Shaikh Aisha",
+        "rating": 5,
+        "comment": "Had a great experience with Arbaaz! The hair wash was very relaxing and refreshing, and the haircut was done perfectly with great attention to detail. He understood exactly what I wanted and delivered excellent results. Professional, skilled, and friendly service. Highly recommended!",
+        "verified": true,
+        "time": 1780143585
+      },
+      {
+        "author": "Prathamesh Patil",
+        "rating": 5,
+        "comment": "I had a fantastic experience at Enrich Lamington road Mumbai branch, all thanks to Pratham Chavan. He is incredibly professional and really takes the time to understand exactly what the client wants. His attention to detail is impressive, and I walked out feeling extremely satisfied with the service. Highly recommended! He worked with great precision and made sure I was comfortable throughout the entire session. If you’re visiting this branch, definitely ask for Pratham Chavan—you won't be disappointed. 10/10.",
+        "verified": true,
+        "time": 1776596893
+      },
+      {
+        "author": "haris .momin",
+        "rating": 5,
+        "comment": "​If you’re visiting Enrich at Lamington Road, I highly recommend booking with Mohammed Shoyeb.\n\n​He is an absolute professional with a fantastic eye for detail. He took the time to understand exactly what I wanted and delivered a sharp, clean cut that perfectly suits my face shape. His technique is precise, and he clearly knows how to handle different hair textures with ease.\n\n​The service was efficient, the finish was top-notch, and the overall experience was excellent. If you’re looking for a stylist who genuinely cares about the final result, Shoyeb is your guy.",
+        "verified": true,
+        "time": 1774530454
+      },
+      {
+        "author": "Shabreen Shaikh",
+        "rating": 5,
+        "comment": "I recently went to Enrich Salon for waxing and a hairstyle, and I’m really happy with the experience. The waxing was done by Suman ji with very carefully with minimal discomfort, and my hairstyle Arbaaz Khan did an amazing job with my hair. The staff was polite, hygienic, and professional. Thankyou both of you and special thanks to enrich team",
+        "verified": true,
+        "time": 1777104332
+      },
+      {
+        "author": "Khushi Gala",
+        "rating": 5,
+        "comment": "I have naturally curly hair and got a haircut along with a Fusio Dose by Keenal. She was very nice, patient, and did a great job. My curls feel healthy and look great. ☺️❤️",
+        "verified": true,
+        "time": 1769782304
+      }
+    ]
+  },
+  "Green Trends": {
+    "key": "Green Trends",
+    "name": "Lakme Salon For Him and Her in Dadar West,Mumbai",
+    "address": "1st Floor, Popatlal Niwas, A-WING, Ranade Rd, Bhawani Sankar, Dadar, Mumbai, Maharashtra 400028, India",
+    "lat": 19.0218631,
+    "lng": 72.83887059999999,
+    "rating": 4.7,
+    "phone": "074002 53252",
+    "photos": [
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3lzaceGL5URPs_9ViRns8xF3v-meHJGAB2uWroCVl4WqsxSblNIOdwxreoOs8rpzV7w2EDQdJ3KYADQqqf6rLjtuhP6inURvhIV80HG8-eROkMTn7Yz8ZATLDlqesmB54qJBpIiyCkBLDb1KmtSZmK-uxIlnXFWSqfIub8y75EvxcNwLFO4e39wV7W5W2s8HErQ3l431n5spHtbeKVnYD5fNbPkXkWKiwm-vjHB9vbkQXPysE3h4sCMELoUZwFqf7dWbMPnSZO8Pk1FXLsHFNFWKki6FyiMtdjsdKhLs2lz4vDYI9TowYt702jzaNq0m_oZbRzeL-3ukDgNRJo4WMwXO8vR55AApX4d05vkPzMZ8R35xK73q7o7O6NnXnJG3v5lBaEaDjysi2l5ts9T_AuVP0_BMR71hyKTK4kneoUyuW8&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3nzXJN9minHgLR6VLUqdjmgEsBpzL3tOcNvKYR4DYvu8LUG15vfNk4aIVx_L5JrHhR10yluMKdFSWsan5EwjRDrM7Z8v0jy5iz1yBoPIFNOtob0QSIwnUBwIwclU8pk-qfVtYgp-WbTdOu2ZtF2zfIw1SGAVnKiAaFABCGBadpBoIvhJ0CjM-eoZa1IIbVJ1-WvXy4GPXvGhyM90XfTGhblnq1Siqsbc65ptFqSz53jzBVyBBDmjBLDX5TQDLm4CJ5h60S6WR4TGW37_vnAlL4yZ1Jyz1qjA2cc97wxg5y-SpOBX_Yw0Tq58ed0zDYRIXGY9l3BfgnZaT1ZPMslH1JAyl9LWW1wkZJGLWxCSOY5zoueKvRuyoYYowiRKeK2Sg43WTVVDnhecMQk5kj4Cgpaj7DsVgnFcShCI2kCL8odvJ8uqdT6rzsK9odHxP1W&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3kI7vBY3Ad03PcxmovKTZcUqYak8TBBFdahb9sLlkZDTY4qR1eZEIK_258i7HGLIAbNYnoj4dA9PikPMvFspRQiVbi1uHxrvvf2SOUEef5O2EC0M5uUDjCu5Y-ngcdlSgdSUDJo9MmsxgU9TmRzRuLv-CB2opu1Y-eBSWl_lm8uKkodvSQ1hcXE49qJNEfWKbvijRupQ1AmYGWsfUlv8vJxMSWzDF2BNdaMbeqHAD7CvXHHINxGA3UyivkCCL6U9-O4z3p2iKTnMx8aaDsgayIRHgU2-syoY6ERVq9ke3Zgn2NEr5smU-SCkupycZF3h_qIj6WWbmF8kCBs8R9pSD_pIM56e_0Z-gQ6UmKRIpO_g4NuhtBR58LUvHHRIczrkqG4auZU5O0xYsLhT3nQGyoMu1ys78P3KVePXTDH-quZKA&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3nQ9S8NrnNtSjVFQgr8lr-wnucM2IBL5zrZYj4WkWsMJfS7gOm9tc9qeLZ6uIyx710XQvUPHdBHo4ji-I_2pNr13dshrP4ZEPQvFHhNz42Z23CQpuIu8wPG8XCdGI10I-58chEtOfLQWQdeKLpjzUydHtpgdc_GjuNWn53dLYTuq8DId6reboC_vRR7-oKUXjNEZ2ewM34MjY1FnDAqWxycOwPSfY9jSrazBMYS4RU0X8Ua-CCGXhlj1mQFY3gruufeL8hgMyYjucynFASLqZOch1yfn0UR1mH-tKu2JxTcPdVDVU6X9Ux4eoUKqGbHTMONtZM72DT9OMxEFEZZlzcP1AE16iaH6QO08pQxivD_H5zASLN6s16zQ5Spdp-YCR0UOduflpcu2YH63mVxtRlU9-N3Ol-wVkQfLnOP1ZVZvJilyu4tt5DHZTNzKiqK&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3nhxIzTZuEptUfD-CjpVgiFkml2ASCPEJJ3W6p1lzQmh6jj1vXoXFtX9Iioc3VKrxLT5Z_lq5IeCLd8oD7MdUUInVnCttfZYZ8yjYrc6NtXn9a-Ly0KevwcexNeHx4B35juXXIs5Kq61eJZDPT8fZ7_XLN68JZSnHkM-CNy3Hx4mRgIOO7-ObRgklmfVvh6NgQlJUjEMyUcypfvvmE2wHQdm5jiOUduo8IZlyUJ9ap-OFw7f8E4bmhabotYtxcOnZk9GvMrHpqtxesHgKfXDkxqZ_ivZLje3OCS4dsurdQsubrmi-t8ZYWyV3d8NUDcRkKv2C5kYZb5MHieu8b1FvbYwnGrNDr5PP4L-26URkekAIe7KSdnbsiSb69S5cgQXPbAwmHSwatwgCDyeTwoifEb_5GpwoAZFAkkFayFEZXYSYZV&key=__MAPS_API_KEY__"
+    ],
+    "reviews": [
+      {
+        "author": "SIDx",
+        "rating": 5,
+        "comment": "Had a wonderful experience at Lakme Salon. I got my pedicure done by Meena, and she did an amazing job. The service was incredibly relaxing, professional, and handled with great care. My feet feel refreshed and well-groomed. As a man, I honestly didn’t expect to enjoy it this much, but I was genuinely impressed. Meena made the entire experience very comfortable. Highly recommended. ✨",
+        "verified": true,
+        "time": 1771079121
+      },
+      {
+        "author": "Spandan Maskar",
+        "rating": 1,
+        "comment": "Absolutely disappointing experience and borderline misleading pricing.\n\nI called the salon beforehand and clearly asked for the price of a men’s haircut. I was told it would be Rs 400. Based on that, I went ahead and got my haircut done. Once everything was finished, I was suddenly told my total bill was Rs 630 because I had received a “stylish” haircut.\n\nNaturally, I asked what exactly counts as a normal haircut. The barber’s answer was vague and unhelpful. He just kept repeating “sir, normal haircut,” without explaining anything. When I pushed further, he said my mullet haircut is considered stylish, while a “normal” haircut is just normal. That explanation makes no sense. My hairstyle is not unusual, and I’ve been to many salons before. This is the first time I’ve been charged extra after the service without being informed upfront.\n\nIt gets worse. During the haircut, I asked how much a beard trim would cost. The barber casually said Rs 450. I questioned this immediately because I had just been told the haircut itself was Rs 400. How does a beard cost more than the haircut? His response was that Lakme provides them with a rate card and they have to follow it. That didn’t inspire any confidence, so I opted out of the beard service.\n\nWhat this really shows is a lack of transparency and poor communication. Prices seem to change based on labels like “stylish” rather than being clearly explained before the service begins. The staff didn’t seem confident in explaining their own pricing and appeared more focused on upselling everything possible instead of being upfront and finishing what they started properly.\n\nMy advice to anyone considering this place: ask very specific questions, get every price confirmed clearly, and don’t assume the quoted rate will actually be what you pay at the end. Otherwise, be prepared for surprises at the billing counter.",
+        "verified": true,
+        "time": 1768480152
+      },
+      {
+        "author": "Sanika Shetye",
+        "rating": 1,
+        "comment": "February 15, 2026\n\nI chose this Lakme salon expecting a certain standard given the brand name. Unfortunately the experience was disappointing. This is not my usual salon but due to last minute availability elsewhere, I ended up here.\n\nThe salon is located on Ranade road, just a 5-minute walk from Dadar west metro station.\n\nThe salon seemed to be operating purely on the reputable branding.  At 11 am, the place was dimly lit, almost empty and staffed by only three people, including the receptionist.\n\nI had requested a hair wash with blast dry along with a nail cut and filing. The person who started with my nails seemed inexperienced. She cut them so short that shaping them became impossible. They were left flat and uneven. Midway she was redirected to another walk-in customer and Rama took over.\n\nRama’s services were below expectations. While my hair was oily and needed a thorough wash, her technique felt more like scrubbing a kitchen slab than a scalp. Nail cutting and filing that she completed afterward was equally substandard.\n\nAdding to the discomfort, the air conditioning was cooling properly, the lighting was inadequate, and the overall service quality was disappointing.\n\nOverall it was a poor experience. I would not recommend this salon.",
+        "verified": true,
+        "time": 1771179134
+      },
+      {
+        "author": "SrihariRangaraj Narendran",
+        "rating": 3,
+        "comment": "The experience was average. The service itself was okay, but the staff tend to push customers toward more expensive options. They also didn’t really listen to what I was asking for, which made the experience a bit disappointing. Overall, it could be better with more attention to customer preferences.",
+        "verified": true,
+        "time": 1772767897
+      },
+      {
+        "author": "sanjivni yatin",
+        "rating": 5,
+        "comment": "Hair treatment !\n\n“Nisha did my relaxing pedicure and it was absolutely wonderful. Nisha and Jitesh also performed my Botoliss treatment and hair color — they took the time to explain what to expect, set clear expectations, and followed each step with great care. I’m very happy with the results. A big thank you to the rest of the team and Lakme Salon for their warm, professional service and for making my visit so comfortable!”",
+        "verified": true,
+        "time": 1764091082
+      }
+    ]
+  },
+  "Jawed Habib": {
+    "key": "Jawed Habib",
+    "name": "Jawed Habib Hair Studio",
+    "address": "SHOP NO -4, Rajkamal CHS, Yogi Nagar Marg, near Corporation Bank, Yogi Nagar, Borivali West, Mumbai, Maharashtra 400091, India",
+    "lat": 19.2349295,
+    "lng": 72.84471909999999,
+    "rating": 4.7,
+    "phone": "093213 90380",
+    "photos": [
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3nF3SQoVLhb6WIQWDQSsslieZQz1HZtp6sVHa1OmZZ687pa5S8Dx7LtgGg84opdncRUzSN1GqY7poMKWLW4Z8jmEZ2Nq4da4Hl0ChC8reBeZMDIYiUEO0ovjyqbjCz7_blvePGPXVDUw1hF1mRUM5B0GCXKsrGE7ARpAyn7Gr-TAUzxhdDg8gc8g0ts8wmpAhRhGp50VESRUwsf3Y2EHr_7eaY-uSKVQA3Q1UOr2UJdltSO4E8y1SbQhkqrDRXJFCzRqnUZ4M82Oe-tbRfRYR3qZ56FF-nb23qNdjJ26-ZDH-U3-lYq89WKFaRIVKDFS9nARw-Z4x4ZNKCPtuRJ5AtIOfc70skVjtPhrV9W7OuBnuTwLLS_LVEEUqk3NdyCekaeFLBYsGcd31NY1e0xrY2-NLnyhbZj5hAjLu37GaiB_Nlj-pZn9X3xisdyFdQr&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3krrag62-ZpFN2OYycPP_M4c9DrhDKXYd5alOp5gGaDb_ECVfmQDBg6HL7N-6ogUZEa1mKrLr_215v36EFZ5zySNdzz8yslL0HtlsDIkk_VSEGCO_E7vu-4ZcEJ_GMlI96S5HbbzrZ1Sw185RR-56dPn3mM3-xW43mPVZPs1xwOsyGw7TSl0PMNV2bNlgdLB2Bf6k0JgUhEKFhol0MkSh6LkQk3j8i_4hIryd0on4No31IOwcncjICrB-VBkIsfDnCd940eYXOgkNNfZd2lQMEYQLLi_01amVprB-8jbk3IxIuRnLjzXPn0ztB_Q2uRitJTwACgko9MV40ueBPxutmUPSpnHluZtsFeQzlajpuzcE8nnx3gGSuEkMMSRPi4OVIiXeQA3XiT0ha6XJPaKnomtLRqCMg05yFOoqliEl3zl353EUDCL2Mx6pE9a2-R&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3najigbGJx-A9I55wXQPMQ1VXb613Mts14GeDrJBjfo0quHePlITVX_xbqAsWtCL49vCtHFXSe4JSV0BBP0Hs8fYOK8WNFV8MjdwnkzB9wUAdGWcCxKSv1MewhNpMw2SFe2ZhUWoleUU7MsUloudBE07Wj84Uyi3Qxu_zhUcbeK4OhFIh5hrS78k0xgnCWi-qQR0sUz0m7F3vdIZJH8WA_6Sf1Teax8ZLDQqwTlm-YH2-bqp4LHUpg1CmZ-DKPw3ekEEs7LGy12DqleU-8yNfqvVDOn-GiUpqYGflv7frO0AHzYPYbQw36vd4ceCGCbpRZ5FYrqkFssrwpJWYtAtHKoyiN0Sr28AVNsSauXT9AfWXAmbztEanWByz4BA8A9eM-WRUTGdS_U9dYrduynoKe3WxBrLidr5rJOMevk6tcHH03f&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3n2sO-h7EAO0aRkzrsf2OTEyKt5zXkZRtujWKYWojkGuD2_5VnP51aWyKt68QExxlcBAmOVtzWcCUf8lYe_S4tjFSb3niILvmNfafX9vY_cEg81D53uRbaiyy9_OnnFDJgdKiD434qb9ltArgu08x0lPRv_fXswjXgll7g-CROo8sk9C-A5aTFO_dG94kCN6f2mC_Qbe-Q-AXoEEw85J1k4iFSrPFdkxpl3JiMw-7731xS8AGvXyUWUFSj0MGvDKrlGFNKiyUiXXvYnUv-AXJOgL4z_WbSvMMjZOqiFUc0zxdlem1mgZFpzSeV-uUDTTOZaYjxlotrmDuklMvtPsbJ4UM9wMBMreL-CjqBpbdffXogNXUyuXr0lombazlgFV89J8Q7Im6uDTGMcSrGIEpMTSYmExTOWgORBF2Wz6u-n1ux3&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3lzQylWm_lIx94RVq1CQ6YcYtwk8riM9o3kYS3wm1ExhUKGmF_7CIZ8QZ7OQi49kQ-wiVzS0BGoveC1V6icBJYlnoPlIX8FFou1Rkjfc2KrAexIqXo_5PxLxSIhzvkmk4smxveID1nf2zIZVjRUfVqOaG9H9ihsW_-3lyWwG84Qr4br0jRN4NgriHsxN0GN1KfdED_HzvQbHMRIhNSOQo3C61OuYEkUhBMuSHJ_ZRdsJdKp1xyby3OvSU6EdA8nXhlc1srVKI8-9MO1NBBaS5fEPjqMF6iyld5xenybTh5UFzF8-PLc4QwbEVipHN_zTbtceNGm5NnRCTRkzUB8GpEKib2U0VU5BjOdImzsfsobTwKt45QkIxHk7VJbaM1ucGt1gqlfDPqoc3HXN_cVahA6OHVUoGliM7nIKjoGSD8&key=__MAPS_API_KEY__"
+    ],
+    "reviews": [
+      {
+        "author": "Nidhi More",
+        "rating": 5,
+        "comment": "I recently got my haircut n highlights done at Javed Habib Studio, Yogi Nagar. My hairstylist Imran suggested a colour as I was quite confused about which shade to choose, and it turned out absolutely amazing. The highlights looked beautiful. After playing Holi, my highlights got stained with permanent colour, but he helped me fix it by covering them properly with the same shade in a darker tone. I’m really thankful for his support and the wonderful service.",
+        "verified": true,
+        "time": 1772976428
+      },
+      {
+        "author": "Prachi Pathratkar",
+        "rating": 5,
+        "comment": "I got my first haircut from here. Absolutely amazed. I told Shivam how I wanted my hair to look and he did not disappoint. Service is amazing and the prices are affordable! He is knowledgeable and polite.\nDefinitely coming back for future haircuts :)",
+        "verified": true,
+        "time": 1770305439
+      },
+      {
+        "author": "pooja modi",
+        "rating": 5,
+        "comment": "I recently visited Javed Habib Hair Studio, Yogi Nagar, for the first time and was initially unsure about the haircut. Hairstylist Imran was very patient, made me feel comfortable, and suggested a style that suited me well. Despite my hesitation, I’m extremely happy with the result. I also got my mother’s haircut done, and it turned out great with excellent volume and shape. We were both very satisfied with the service and the staff’s polite nature. Highly recommended—must visit without any doubt.",
+        "verified": true,
+        "time": 1767279167
+      },
+      {
+        "author": "Deepa Dhere",
+        "rating": 5,
+        "comment": "Imran did the best hair cut, hair spa and hair style and hair global hair color He suggested a different hair color and also added volume to my hair. He explains what you really need. And I recommend to visit Jawed Habib Rajkamal Yogi Nagar for a fabulous experience.",
+        "verified": true,
+        "time": 1743154244
+      },
+      {
+        "author": "Shruti Jain",
+        "rating": 5,
+        "comment": "Got hair cut and spa done at Javed Habib at Yogi Nagar\nGreat service @Imran and value for money\nNew look and life to my dull hair… thanks Javed Habib",
+        "verified": true,
+        "time": 1762786202
+      }
+    ]
+  },
+  "Lakme Salon": {
+    "key": "Lakme Salon",
+    "name": "Lakme Salon For Him and Her in Worli,Mumbai",
+    "address": "Shop no 7, Sukhada Apartment, Sir Pochkhanawala Rd, B Wing, Worli, Mumbai, Maharashtra 400030, India",
+    "lat": 19.0076337,
+    "lng": 72.8170438,
+    "rating": 4.7,
+    "phone": "081692 74962",
+    "photos": [
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3mfBDLRVBcsb5O4JK9rWaXyCz-Wh5KZ786PY31CTq5BlwNmKfMf1qvyv4PFc9HFupZbPSnxwnbm1Mm6tH-BFgLjWrpEkCRNkUfjgNzQD82KxdULoWKgljlkGGr4IjYurhNg9xfUOjLnGsf7mjgpHoCoykf4ZSY0J67Fak5pU3H7gObwLdHqAr7CGZgJZLXI9tAg8nu13OZPlQk5JEUP6fpG59GRoodAxOiJ6odTkncbH-DcnlzfKC57mH2hDUZeu8wffpBOnM4-R5Jsss-tJh6ANUt7hdyvrEVzlHJkAgUR_sXU7C-FMUcoiNoBTkaU3JylzaDNfiw23v9qboFGcM5jcZhKE0tUsIZHQqFRMuaEysCFfRZSIND_r8tH7h2LSrDSGgqyvAYBqYEXC8EWuD4X8xzpHdi-gCnw-VClZSyFM9SlmTCm65YJRAR0GrE3&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3msgcKBadwTTmwhuoctyMqJGivoGz1_g3sUHVe3s1mPL57hhMO6q3VBWozjqi9gv2RTJYlEQb367UBMbkLvFG85V4zCGh_egOktgsn0ASpNVKFGEPilfjDnNOchzXKKd9j_0fnOlqXwRZSKojUUYxZCKP9zigubiUFgPLFsKJbTIZwlJgXxb_I_Ak9T4kxLOISQSJLCt74oJjZ-mhZ6uvK353a0HXT3h_S1XvSdRCIs0RqMfqQuaO2E4z_4A4oHWk3zQQBl6SswAVvRQUo-fFGCxghsV56ZDJTEha2TOEYLVnqGoW1MWgg0CTD50kxuVzkeubJ4qlJIXyR2HAYHfR75gbAR9pWmRRK-rwDTWjYY32aHEQiMYDacS5uNzWmrd8ayMA_c4nJNPyxotoWguM0u-giLpk256E25Hb6ZASU&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3m_1J-N_vG_Cz0FA4y5xr0im2mf_P8yUxCKqrB0QT8GZpR_BblFBRAyAvyP-bemajHSM8dD42Q9ca98SiWe2q0Qk6m4DI6zVcrwmergjmXibG-5DvHlKpmVMN13bLDI4vgVQSUuWuJ6ADXxjKY6kIzLPLOOPgJ77VevPzT64J0uCgqFpauRXDCHyxCD4FbMmAcikrNklOz_YFz93XRA1WCDkGqfPC2f243QlYTtICwDzL-58yDsAm6LwdzxNgPxuEYXKGTv0jMD98tHTqSvNDJLVyE5OTC3cAl7ZV9uD06vBctv6RmrIlVz1dd4_0UkiwhOG0sEKfxwis8CZ7ZSpX4glY1vJISN6sbXrsXIaKx5-IacYgVNekL-IQu1BTPkbdO3JWrPTrVSsj1m2LYmWs6KD4fsI8R2m_QHGzT0_QIGj0M&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3kubkpibuSgn3TbUyf_m6WwC8tXK1aCeG4A2SVEdrQZqQSNUK5DZDJN6ewIJMKJrtIiUc5W8eKSnb3xD2_WcgqdHtVeP_j9iDMZu_0LdgrfkPJmxU_GAO4lfIzbRXcN8GN7WIPJu0FEjXB_xzKu2dqcLUNbaE9kjhEMNwmyOgHoLCW-UigmoNsnKq09HdagT4sIjIfbsAAx1KkhJG7RBNTMTprjWgXhPLfMJYv5OFIzpxK3naqwzzZxOf4n7pPlXLjKX4Dd20NP2Y_WRRVW_dVp-za6g6chCcfMe0HPg7aaaEzcpYiF3qfoEqNR8Oeb-yMqSzei59ABixt0eOW_F1dUlpwqpHhf-yPt6WKIQWyk1J8iff4UWIHOP0RobfEplR9Av7WkEjZovLtlg_xF1LlXpEaOqZ7oHsIQnczcWh9gXe2q&key=__MAPS_API_KEY__",
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AaVGc3lCDFZPuCMpKNv_fam1DIuCcinw0GCRF7ZIqigFeQys4kY1jyl_YQk9gZy8i8tZJXmXp6occnm-7eJcfz2gcvJEkbNcKsVFMavgllqabDUwDz3Lu-NAaJLpJ88U9vrqHNnkz5IqrU_Cmj68Uxlts3b4ZjNPFFQLcvMejxK1omi34M9qXxlIJHHNGgEZ7t0a_R5xsPYy6gUhw45rMmfo1bgAmRX7zAHd1Dfjj3zfARKDk8ZsPuwrGcT7i4H10iWcjRq3qTXLqC83Qv9aaMeL4hbIHhiEF2mhTHAlusJaDne2eiDKvfhR73ja1t81SAa387JhVS7ExL1hnZoJUIV7w8vUqtYkusGTaN9AYNR2e4AsWyrb3KmGH4dwve4XCWg64eI9hgGpt40hClIKFrVpFAZ53a49sgYBv7WtC2cPV6JpQ6cw&key=__MAPS_API_KEY__"
+    ],
+    "reviews": [
+      {
+        "author": "Anushka Tata",
+        "rating": 1,
+        "comment": "While the hairwash is nice, their blow dry service is absolutely terrible. They don’t know how to work with textured hair and have no clue about how wet your hair needs to be before you actually start blow drying it. I asked for soft curls and not frizzy hair, roots left curly",
+        "verified": true,
+        "time": 1769062057
+      },
+      {
+        "author": "Tanvi Tambe",
+        "rating": 5,
+        "comment": "Best spa in Mumbai! Love everything! Amazing massages and haircuts! Service is so good too 😍",
+        "verified": true,
+        "time": 1754484647
+      },
+      {
+        "author": "Rianna",
+        "rating": 5,
+        "comment": "We had come over for a facial treatment and\nNehal delivered a facial that was not only refreshing but also incredibly relaxing. Loved the service provided by this parlour. Their hygiene, prices and quality of services are all top notch!",
+        "verified": true,
+        "time": 1753790308
+      },
+      {
+        "author": "Deepika Gupta",
+        "rating": 5,
+        "comment": "Prasad is excellent with his skills... he did my hair colour and I really liked his work.\nwould like to take more service from him. Lakme should hire more staff like him.\n\nLakme Salon manager Sallauddin is excellent at his work, friendly gesture and provides great customer service.\nWish both of them good luck with their career.",
+        "verified": true,
+        "time": 1616346238
+      },
+      {
+        "author": "Jenil",
+        "rating": 5,
+        "comment": "Very friendly and competent staff.\nSangita ji did my waxing and it was the best wax I had, didn’t feel any pain at all.",
+        "verified": true,
+        "time": 1758814246
+      }
+    ]
+  }
+}

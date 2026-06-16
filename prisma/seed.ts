@@ -1,4 +1,6 @@
 import { PrismaClient } from "@prisma/client";
+import fs from "fs";
+import path from "path";
 
 const prisma = new PrismaClient();
 
@@ -329,22 +331,69 @@ async function main() {
     },
   });
 
+  // Load real salon data from Places API if available
+  let realSalons: Record<string, any> = {};
+  try {
+    const realSalonsPath = path.join(process.cwd(), "prisma", "real_salons.json");
+    if (fs.existsSync(realSalonsPath)) {
+      realSalons = JSON.parse(fs.readFileSync(realSalonsPath, "utf-8"));
+      console.log(`Loaded real data for ${Object.keys(realSalons).length} salons.`);
+    }
+  } catch (err) {
+    console.error("Failed to load real_salons.json:", err);
+  }
+
+  const mapsKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "AIzaSyBMEfWFkqWD5DCaDCYTGEFaTZFE84D-d0Q";
+  const replaceKeyPlaceholder = (url: string) => url.replace("__MAPS_API_KEY__", mapsKey);
+
   for (const s of SALONS) {
-    const reviewCount = s.name === "Looks Salon" ? 10 : 5 + (s.priceFrom % 4);
-    const revs = reviewsFor(s.rating, reviewCount);
+    const realData = realSalons[s.name];
+    
+    // Override details with real data if found
+    const name = realData ? realData.name : s.name;
+    const address = realData ? realData.address : s.address;
+    const lat = realData ? realData.lat : s.lat;
+    const lng = realData ? realData.lng : s.lng;
+    const avgRating = realData ? realData.rating : s.rating;
+    const coverImage = realData && realData.photos.length > 0 ? replaceKeyPlaceholder(realData.photos[0]) : s.cover;
+    const galleryList = realData && realData.photos.length > 0 ? realData.photos.map(replaceKeyPlaceholder) : s.gallery;
+    
+    // If real reviews exist, use them; otherwise, generate mock reviews
+    let dbReviews: any[] = [];
+    let reviewCount = 0;
+    if (realData && realData.reviews && realData.reviews.length > 0) {
+      dbReviews = realData.reviews.map((r: any) => ({
+        author: r.author,
+        rating: r.rating,
+        comment: r.comment,
+        verified: true,
+        createdAt: new Date(r.time * 1000)
+      }));
+      reviewCount = realData.reviews.length;
+    } else {
+      reviewCount = s.name === "Looks Salon" ? 10 : 5 + (s.priceFrom % 4);
+      const mockRevs = reviewsFor(s.rating, reviewCount);
+      dbReviews = mockRevs.map((r) => ({
+        author: r.author,
+        rating: r.rating,
+        comment: r.comment,
+        verified: true,
+        createdAt: new Date(Date.now() - r.daysAgo * 86400000)
+      }));
+    }
 
     const salon = await prisma.salon.create({
       data: {
-        name: s.name,
-        slug: slugify(s.name + "-" + s.locality),
+        name: name,
+        slug: slugify(name + "-" + s.locality),
         description: s.description,
         locality: s.locality,
-        address: s.address,
-        lat: s.lat,
-        lng: s.lng,
-        coverImage: s.cover,
-        gallery: JSON.stringify(s.gallery),
-        avgRating: s.rating,
+        address: address,
+        lat: lat,
+        lng: lng,
+        coverImage: coverImage,
+        gallery: JSON.stringify(galleryList),
+        avgRating: avgRating,
         totalReviews: reviewCount,
         verified: s.verified,
         openTime: s.open,
@@ -369,17 +418,11 @@ async function main() {
           })),
         },
         reviews: {
-          create: revs.map((r) => ({
-            author: r.author,
-            rating: r.rating,
-            comment: r.comment,
-            verified: true,
-            createdAt: new Date(Date.now() - r.daysAgo * 86400000),
-          })),
+          create: dbReviews,
         },
       },
     });
-    console.log(`Seeded ${salon.name} (${salon.locality}) with ${reviewCount} reviews`);
+    console.log(`Seeded ${salon.name} (${salon.locality}) with ${reviewCount} real/mock reviews`);
   }
 
   console.log("Seed complete.");
