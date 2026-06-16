@@ -15,6 +15,7 @@ import {
   Check,
   Navigation,
   X,
+  Phone,
 } from "lucide-react";
 import type { SalonDTO, ReviewDTO, ServiceDTO } from "@/lib/types";
 import { formatINR, formatHour } from "@/lib/utils";
@@ -240,6 +241,17 @@ export function SalonDetail({
                     </button>
                   </div>
                 </div>
+
+                {salon.phone && (
+                  <div className="mt-4 flex items-center gap-2 rounded-xl border border-line bg-white p-4">
+                    <Phone size={18} className="shrink-0 text-accent" />
+                    <div className="text-sm text-ink font-medium">
+                      <a href={`tel:${salon.phone}`} className="hover:underline">
+                        {salon.phone}
+                      </a>
+                    </div>
+                  </div>
+                )}
 
                 <div className="mt-4 rounded-xl border border-line bg-white p-4">
                   <h4 className="text-sm font-semibold text-ink">Opening hours</h4>

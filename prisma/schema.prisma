@@ -39,6 +39,7 @@ model Salon {
   closeTime    Int      @default(21)
   homeService  Boolean  @default(false)
   priceFrom    Int      @default(0)
+  phone        String   @default("")
   createdAt    DateTime @default(now())
 
   services Service[]

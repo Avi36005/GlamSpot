@@ -11,6 +11,43 @@ const mapsKey =
   process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
   "AIzaSyBMEfWFkqWD5DCaDCYTGEFaTZFE84D-d0Q";
 
+const SALON_INTERIOR_IMAGES = [
+  "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80",
+  "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1200&q=80",
+  "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80",
+  "https://images.unsplash.com/photo-1600948836101-f9ffda59d151?w=1200&q=80",
+  "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=1200&q=80",
+  "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=1200&q=80",
+  "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1200&q=80",
+  "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80",
+  "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1200&q=80",
+  "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=80",
+  "https://images.unsplash.com/photo-1596178060810-72cb6f4a8f90?w=1200&q=80",
+  "https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=1200&q=80",
+  "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1200&q=80",
+  "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1200&q=80",
+  "https://images.unsplash.com/photo-1522337660859-02f6f27f31ac?w=1200&q=80"
+];
+
+function getSalonInteriorImages(seedStr: string) {
+  let hash = 0;
+  for (let i = 0; i < seedStr.length; i++) {
+    hash = seedStr.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  hash = Math.abs(hash);
+
+  const coverIdx = hash % SALON_INTERIOR_IMAGES.length;
+  const coverImage = SALON_INTERIOR_IMAGES[coverIdx];
+
+  const gallery: string[] = [];
+  for (let i = 1; i <= 4; i++) {
+    const idx = (coverIdx + i) % SALON_INTERIOR_IMAGES.length;
+    gallery.push(SALON_INTERIOR_IMAGES[idx]);
+  }
+
+  return { coverImage, gallery };
+}
+
 export async function syncGoogleSalons(q: string, locality?: string) {
   if (!q && !locality) return;
 
@@ -36,7 +73,6 @@ export async function syncGoogleSalons(q: string, locality?: string) {
     }
   }
 
-  // Avoid querying empty search terms or general noise
   if (searchQuery.length < 3) return;
 
   console.log(`[Google Places] Syncing salons for query: "${searchQuery}"`);
@@ -56,8 +92,8 @@ export async function syncGoogleSalons(q: string, locality?: string) {
       return;
     }
 
-    // Process top 10 results
-    const results = data.results.slice(0, 10);
+    // Process top 20 results for a more comprehensive city search
+    const results = data.results.slice(0, 20);
     const placeIds = results.map((r: any) => r.place_id);
 
     // Find which ones are already in DB
@@ -77,14 +113,14 @@ export async function syncGoogleSalons(q: string, locality?: string) {
       `Found ${newPlaces.length} new salons out of ${results.length} results. Fetching details...`
     );
 
-    // Fetch details in parallel for new places (up to 8)
-    const newPlacesToFetch = newPlaces.slice(0, 8);
+    // Fetch details in parallel for new places (up to 12)
+    const newPlacesToFetch = newPlaces.slice(0, 12);
     await Promise.all(
       newPlacesToFetch.map(async (place: any) => {
         try {
           const detailsUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${
             place.place_id
-          }&fields=name,formatted_address,formatted_phone_number,geometry,rating,user_ratings_total,reviews,photos,website,editorial_summary,address_components&key=${mapsKey}`;
+          }&fields=name,formatted_address,formatted_phone_number,geometry,rating,user_ratings_total,reviews,photos,website,editorial_summary,address_components,price_level&key=${mapsKey}`;
           const detailRes = await fetch(detailsUrl);
           if (!detailRes.ok) return;
           const detailData = await detailRes.json();
@@ -98,7 +134,8 @@ export async function syncGoogleSalons(q: string, locality?: string) {
             for (const comp of details.address_components) {
               if (
                 comp.types.includes("sublocality") ||
-                comp.types.includes("neighborhood")
+                comp.types.includes("neighborhood") ||
+                comp.types.includes("sublocality_level_1")
               ) {
                 parsedLocality = comp.long_name;
               }
@@ -111,8 +148,24 @@ export async function syncGoogleSalons(q: string, locality?: string) {
             }
           }
 
-          // Fallback for locality/city
-          if (!parsedCity) parsedCity = "Mumbai";
+          // Standardize city name based on address matching
+          const addressLower = details.formatted_address.toLowerCase();
+          if (addressLower.includes("mumbai") || addressLower.includes("bombay")) {
+            parsedCity = "Mumbai";
+          } else if (addressLower.includes("pune")) {
+            parsedCity = "Pune";
+          } else if (addressLower.includes("delhi") || addressLower.includes("new delhi")) {
+            parsedCity = "Delhi";
+          } else if (addressLower.includes("bangalore") || addressLower.includes("bengaluru")) {
+            parsedCity = "Bangalore";
+          } else if (addressLower.includes("thane")) {
+            parsedCity = "Thane";
+          } else if (addressLower.includes("navi mumbai")) {
+            parsedCity = "Navi Mumbai";
+          } else if (!parsedCity) {
+            parsedCity = "Mumbai"; // Default fallback
+          }
+
           if (!parsedLocality) {
             const parts = details.formatted_address.split(",");
             if (parts.length > 2) {
@@ -122,18 +175,8 @@ export async function syncGoogleSalons(q: string, locality?: string) {
             }
           }
 
-          // Construct cover image and gallery
-          let coverImage =
-            "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80"; // fallback
-          const galleryList: string[] = [];
-          if (details.photos && details.photos.length > 0) {
-            coverImage = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=${details.photos[0].photo_reference}&key=${mapsKey}`;
-            for (const p of details.photos.slice(0, 5)) {
-              galleryList.push(
-                `https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=${p.photo_reference}&key=${mapsKey}`
-              );
-            }
-          }
+          // Fetch deterministic interior-only salon images (guaranteed no people!)
+          const { coverImage, gallery } = getSalonInteriorImages(details.name);
 
           // Reviews
           const dbReviews = (details.reviews || []).map((r: any) => ({
@@ -144,47 +187,60 @@ export async function syncGoogleSalons(q: string, locality?: string) {
             createdAt: new Date(r.time * 1000),
           }));
 
-          // Generate services with realistic prices
+          // Live scaled pricing based on place price_level
+          const priceLevel =
+            details.price_level !== undefined
+              ? details.price_level
+              : Math.floor(Math.random() * 2) + 1; // Default to 1 or 2
+          const baseline =
+            priceLevel === 0 || priceLevel === 1
+              ? 350
+              : priceLevel === 2
+              ? 650
+              : priceLevel === 3
+              ? 1100
+              : 1800;
+
           const servicesList = [
             {
               name: "Haircut & Styling",
               category: "hair",
-              price: 450,
+              price: baseline,
               dur: 45,
               desc: "Premium haircut, hair wash and styling by senior stylist.",
             },
             {
               name: "Global Hair Coloring",
               category: "hair",
-              price: 2500,
+              price: Math.round((baseline * 5.5) / 100) * 100,
               dur: 120,
               desc: "L'Oreal Professional global color or highlights.",
             },
             {
               name: "Facial & Skin Glow",
               category: "skin",
-              price: 1500,
+              price: Math.round((baseline * 3.3) / 100) * 100,
               dur: 60,
               desc: "Deep cleansing facial with premium serum for radiant skin.",
             },
             {
               name: "Manicure & Nail Care",
               category: "nails",
-              price: 600,
+              price: Math.round((baseline * 1.3) / 100) * 100,
               dur: 30,
               desc: "Classic nail trimming, shaping, cuticle care and polish.",
             },
             {
               name: "Pedicure Spa",
               category: "nails",
-              price: 800,
+              price: Math.round((baseline * 1.8) / 100) * 100,
               dur: 45,
               desc: "Relaxing foot soak, scrub, massage and classic pedicure.",
             },
             {
               name: "Deep Tissue Massage",
               category: "spa",
-              price: 2000,
+              price: Math.round((baseline * 4.5) / 100) * 100,
               dur: 60,
               desc: "Rejuvenating massage to relieve muscle tension and stress.",
             },
@@ -231,14 +287,15 @@ export async function syncGoogleSalons(q: string, locality?: string) {
               lat: details.geometry.location.lat,
               lng: details.geometry.location.lng,
               coverImage,
-              gallery: JSON.stringify(galleryList),
+              gallery: JSON.stringify(gallery),
               avgRating: details.rating || 4.0,
               totalReviews: details.user_ratings_total || 0,
               verified: true,
               openTime: 9,
               closeTime: 21,
               homeService: Math.random() > 0.5,
-              priceFrom: 450,
+              priceFrom: baseline,
+              phone: details.formatted_phone_number || "",
               services: {
                 create: servicesList.map((s) => ({
                   name: s.name,
@@ -266,7 +323,7 @@ export async function syncGoogleSalons(q: string, locality?: string) {
             },
           });
           console.log(
-            `Successfully synced and saved new salon: ${details.name} in ${parsedLocality}`
+            `Successfully synced and saved new salon: ${details.name} in ${parsedLocality} (${parsedCity})`
           );
         } catch (err) {
           console.error(

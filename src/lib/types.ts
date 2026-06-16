@@ -44,6 +44,7 @@ export type SalonDTO = {
   closeTime: number;
   homeService: boolean;
   priceFrom: number;
+  phone: string;
   categories: string[];
   services?: ServiceDTO[];
   staff?: StaffDTO[];

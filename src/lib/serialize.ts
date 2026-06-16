@@ -19,6 +19,7 @@ type AnySalon = {
   closeTime: number;
   homeService: boolean;
   priceFrom: number;
+  phone: string;
   services?: {
     id: string;
     name: string;
@@ -59,6 +60,7 @@ export function serializeSalon(s: AnySalon): SalonDTO {
     closeTime: s.closeTime,
     homeService: s.homeService,
     priceFrom: s.priceFrom,
+    phone: s.phone || "",
     categories,
     services: s.services,
     staff: s.staff,
