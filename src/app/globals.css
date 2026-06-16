@@ -256,5 +256,16 @@ body {
   animation: spin 8s linear infinite;
 }
 
-
+/* Hero search CTA soft glow pulse — fires every 8s */
+@keyframes hero-btn-glow {
+  0%, 85%, 100% {
+    box-shadow: none;
+  }
+  92% {
+    box-shadow: 0 0 30px rgba(201, 24, 74, 0.25), 0 0 60px rgba(201, 24, 74, 0.1);
+  }
+}
+.hero-search-btn {
+  animation: hero-btn-glow 8s ease-in-out infinite;
+}
 
