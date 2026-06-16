@@ -162,8 +162,8 @@ export function SalonDetail({
                     {CATEGORIES.find((c) => c.key === cat)?.label ?? cat}
                   </h3>
                   <div className="grid gap-3 md:grid-cols-2">
-                    {items.map((s) => (
-                      <ServiceCard key={s.id} service={s} salonId={salon.id} />
+                    {items.map((s, idx) => (
+                      <ServiceCard key={s.id} service={s} salonId={salon.id} index={idx} />
                     ))}
                   </div>
                 </div>
@@ -174,8 +174,8 @@ export function SalonDetail({
           {/* Staff */}
           {tab === "Staff" && (
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {(salon.staff ?? []).map((s) => (
-                <StaffCard key={s.id} staff={s} />
+              {(salon.staff ?? []).map((s, idx) => (
+                <StaffCard key={s.id} staff={s} index={idx} />
               ))}
             </div>
           )}
@@ -217,7 +217,7 @@ export function SalonDetail({
                   {filteredReviews.length === 0 ? (
                     <p className="text-muted">No reviews in this range.</p>
                   ) : (
-                    filteredReviews.map((r) => <ReviewCard key={r.id} review={r} />)
+                    filteredReviews.map((r, idx) => <ReviewCard key={r.id} review={r} index={idx} />)
                   )}
                 </div>
               </div>

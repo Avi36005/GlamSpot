@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "motion/react";
 import { Calendar, Clock, User as UserIcon } from "lucide-react";
 import type { BookingDTO } from "@/lib/types";
 import { formatINR, formatDateLong, formatTime12 } from "@/lib/utils";
@@ -12,14 +13,20 @@ export function BookingCard({
   onCancel,
   onReview,
   muted = false,
+  index = 0,
 }: {
   booking: BookingDTO;
   onCancel?: (id: string) => void;
   onReview?: (b: BookingDTO) => void;
   muted?: boolean;
+  index?: number;
 }) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, x: -12 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.35, ease: "easeOut", delay: (index % 6) * 0.05 }}
+      whileHover={{ x: 3 }}
       className={`group flex gap-4 rounded-2xl border border-line border-l-[3px] border-l-line bg-white p-4 transition-all hover:border-l-accent hover:shadow-[var(--shadow-card)] ${
         muted ? "opacity-80" : ""
       }`}
@@ -33,13 +40,13 @@ export function BookingCard({
           alt={booking.salonName}
           fill
           sizes="96px"
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </Link>
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-2">
           <div>
-            <h3 className="font-display text-base font-semibold text-ink">
+            <h3 className="font-display text-base font-semibold text-ink transition-colors group-hover:text-accent">
               {booking.salonName}
             </h3>
             <p className="text-sm text-muted">{booking.serviceName}</p>
@@ -67,24 +74,29 @@ export function BookingCard({
           </span>
           <div className="flex gap-2">
             {onCancel && booking.status !== "cancelled" && (
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => onCancel(booking.id)}
                 className="rounded-[8px] border border-line px-3 py-1.5 text-xs font-medium text-ink transition-colors hover:bg-cream"
               >
                 Cancel
-              </button>
+              </motion.button>
             )}
             {onReview && !booking.hasReview && (
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => onReview(booking)}
                 className="rounded-[8px] bg-accent px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-accent-dark"
               >
                 Rate Your Visit
-              </button>
+              </motion.button>
             )}
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
+

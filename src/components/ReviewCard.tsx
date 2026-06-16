@@ -1,4 +1,7 @@
+"use client";
+
 import { BadgeCheck } from "lucide-react";
+import { motion } from "motion/react";
 import type { ReviewDTO } from "@/lib/types";
 import { StarRating } from "./StarRating";
 import { Badge } from "./ui";
@@ -20,9 +23,16 @@ function timeAgo(iso: string) {
   return `${Math.floor(days / 30)}mo ago`;
 }
 
-export function ReviewCard({ review }: { review: ReviewDTO }) {
+export function ReviewCard({ review, index = 0 }: { review: ReviewDTO; index?: number }) {
   return (
-    <div className="rounded-xl border border-line bg-white p-4">
+    <motion.div
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-10px" }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94], delay: (index % 4) * 0.05 }}
+      whileHover={{ y: -2 }}
+      className="rounded-xl border border-line bg-white p-4 transition-all duration-300 hover:border-accent/15 hover:shadow-[var(--shadow-card)]"
+    >
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
           <span className="grid h-10 w-10 place-items-center rounded-full bg-cream text-sm font-semibold text-ink">
@@ -45,6 +55,7 @@ export function ReviewCard({ review }: { review: ReviewDTO }) {
         )}
       </div>
       <p className="mt-3 text-sm leading-relaxed text-ink/80">{review.comment}</p>
-    </div>
+    </motion.div>
   );
 }
+

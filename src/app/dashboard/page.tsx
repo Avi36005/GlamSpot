@@ -168,8 +168,8 @@ function BookingList({
   if (list.length === 0) return <Empty text={empty} />;
   return (
     <div className="space-y-3">
-      {list.map((b) => (
-        <BookingCard key={b.id} booking={b} muted={muted} onCancel={onCancel} onReview={onReview} />
+      {list.map((b, idx) => (
+        <BookingCard key={b.id} booking={b} index={idx} muted={muted} onCancel={onCancel} onReview={onReview} />
       ))}
     </div>
   );
