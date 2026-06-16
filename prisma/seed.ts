@@ -40,45 +40,9 @@ async function main() {
   const mapsKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "AIzaSyBMEfWFkqWD5DCaDCYTGEFaTZFE84D-d0Q";
   const replaceKeyPlaceholder = (url: string) => url.replace("__MAPS_API_KEY__", mapsKey);
 
-  const SALON_INTERIOR_IMAGES = [
-    "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80",
-    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1200&q=80",
-    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80",
-    "https://images.unsplash.com/photo-1600948836101-f9ffda59d151?w=1200&q=80",
-    "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=1200&q=80",
-    "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=1200&q=80",
-    "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1200&q=80",
-    "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80",
-    "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1200&q=80",
-    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=80",
-    "https://images.unsplash.com/photo-1596178060810-72cb6f4a8f90?w=1200&q=80",
-    "https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=1200&q=80",
-    "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1200&q=80",
-    "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1200&q=80",
-    "https://images.unsplash.com/photo-1522337660859-02f6f27f31ac?w=1200&q=80"
-  ];
-
-  function getSalonInteriorImages(seedStr: string) {
-    let hash = 0;
-    for (let i = 0; i < seedStr.length; i++) {
-      hash = seedStr.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    hash = Math.abs(hash);
-
-    const coverIdx = hash % SALON_INTERIOR_IMAGES.length;
-    const coverImage = SALON_INTERIOR_IMAGES[coverIdx];
-
-    const gallery: string[] = [];
-    for (let i = 1; i <= 4; i++) {
-      const idx = (coverIdx + i) % SALON_INTERIOR_IMAGES.length;
-      gallery.push(SALON_INTERIOR_IMAGES[idx]);
-    }
-
-    return { coverImage, gallery };
-  }
-
   for (const s of realSalons) {
-    const { coverImage, gallery } = getSalonInteriorImages(s.name);
+    const coverImage = s.cover ? replaceKeyPlaceholder(s.cover) : "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80";
+    const galleryList = s.gallery ? s.gallery.map(replaceKeyPlaceholder) : [];
     
     // Map reviews with actual timestamps
     const dbReviews = s.reviews.map((r: any) => ({
@@ -99,7 +63,7 @@ async function main() {
         lat: s.lat,
         lng: s.lng,
         coverImage: coverImage,
-        gallery: JSON.stringify(gallery),
+        gallery: JSON.stringify(galleryList),
         avgRating: s.rating,
         totalReviews: s.reviews.length,
         verified: s.verified,
