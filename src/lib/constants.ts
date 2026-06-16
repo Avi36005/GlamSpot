@@ -9,6 +9,17 @@ export const LOCALITIES = [
   "Borivali",
   "Thane",
   "Navi Mumbai",
+  "Ghatkopar",
+  "Chembur",
+  "Khar",
+  "Malad",
+  "Mulund",
+  "Kandivali",
+  "Vashi",
+  "Kalyan",
+  "Mira Road",
+  "Kurla",
+  "Dombivli",
 ];
 
 export const CATEGORIES = [
