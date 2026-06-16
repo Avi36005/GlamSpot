@@ -100,7 +100,7 @@ export function SalonCard({ salon, index = 0 }: { salon: SalonDTO; index?: numbe
           <motion.span
             key={saved ? "on" : "off"}
             animate={{ scale: [1, 1.4, 1] }}
-            transition={{ type: "spring", stiffness: 300, damping: 12 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
           >
             <Heart
               size={16}
