@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Playfair_Display, DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { SavedProvider } from "@/components/providers";
-import { PageTransition } from "@/components/PageTransition";
-import { SmoothScroll } from "@/components/SmoothScroll";
+import { PageTransition } from "@/components/motion/PageTransition";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],

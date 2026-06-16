@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Check, ChevronLeft, Clock, MapPin, CreditCard, Store, Sparkles } from "lucide-react";
 import type { SalonDTO, ServiceDTO, StaffDTO } from "@/lib/types";
 import { fetchSalon, fetchSlots, createBooking } from "@/lib/api";
-import { SlotGrid, type Slot } from "@/components/SlotGrid";
+import { SlotGrid, type Slot } from "@/components/booking/SlotGrid";
 import { formatINR, formatDateLong, formatTime12, todayISO } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 

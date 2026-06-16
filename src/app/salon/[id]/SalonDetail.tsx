@@ -19,18 +19,18 @@ import {
 } from "lucide-react";
 import type { SalonDTO, ReviewDTO, ServiceDTO } from "@/lib/types";
 import { formatINR, formatHour } from "@/lib/utils";
-import { StarRating } from "@/components/StarRating";
+import { StarRating } from "@/components/ui/StarRating";
 import { Badge } from "@/components/ui";
-import { ServiceCard } from "@/components/ServiceCard";
-import { StaffCard } from "@/components/StaffCard";
-import { ReviewCard } from "@/components/ReviewCard";
-import { AIReviewSummary } from "@/components/AIReviewSummary";
+import { ServiceCard } from "@/components/salon/ServiceCard";
+import { StaffCard } from "@/components/salon/StaffCard";
+import { ReviewCard } from "@/components/salon/ReviewCard";
+import { AIReviewSummary } from "@/components/salon/AIReviewSummary";
 import { useSaved } from "@/components/providers";
 import { PageFade } from "@/components/motion";
 import { CATEGORIES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-const SalonMap = dynamic(() => import("@/components/SalonMap"), { ssr: false });
+const SalonMap = dynamic(() => import("@/components/salon/SalonMap"), { ssr: false });
 
 const TABS = ["Services", "Staff", "Reviews", "About"] as const;
 type Tab = (typeof TABS)[number];

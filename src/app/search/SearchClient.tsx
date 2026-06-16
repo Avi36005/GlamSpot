@@ -8,13 +8,13 @@ import { SlidersHorizontal, LayoutGrid, Map as MapIcon, X } from "lucide-react";
 import { LOCALITIES, CATEGORIES, SORTS } from "@/lib/constants";
 import type { SalonDTO } from "@/lib/types";
 import { fetchSalons } from "@/lib/api";
-import { SalonCard, SalonCardCompact } from "@/components/SalonCard";
-import { CATEGORY_ICONS } from "@/components/CategoryChips";
-import { LocalityMultiSelect } from "@/components/LocalityMultiSelect";
-import { PriceSlider } from "@/components/PriceSlider";
+import { SalonCard, SalonCardCompact } from "@/components/salon/SalonCard";
+import { CATEGORY_ICONS } from "@/components/salon/CategoryChips";
+import { LocalityMultiSelect } from "@/components/salon/LocalityMultiSelect";
+import { PriceSlider } from "@/components/salon/PriceSlider";
 import { cn } from "@/lib/utils";
 
-const SalonMap = dynamic(() => import("@/components/SalonMap"), {
+const SalonMap = dynamic(() => import("@/components/salon/SalonMap"), {
   ssr: false,
   loading: () => <div className="h-full w-full bg-cream" />,
 });

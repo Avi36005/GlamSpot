@@ -8,8 +8,8 @@ import { Heart, BadgeCheck, MapPin, Star, Home, Zap, Flame } from "lucide-react"
 import type { SalonDTO } from "@/lib/types";
 import { formatINR } from "@/lib/utils";
 import { CATEGORIES } from "@/lib/constants";
-import { Badge } from "./ui";
-import { useSaved } from "./providers";
+import { Badge } from "@/components/ui";
+import { useSaved } from "@/components/providers";
 import { TiltCard } from "@/components/motion/TiltCard";
 
 function catLabel(key: string) {

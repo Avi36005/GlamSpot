@@ -11,9 +11,9 @@ import {
   cancelBooking,
   submitReview,
 } from "@/lib/api";
-import { BookingCard } from "@/components/BookingCard";
-import { SalonCard } from "@/components/SalonCard";
-import { StarInput } from "@/components/StarRating";
+import { BookingCard } from "@/components/booking/BookingCard";
+import { SalonCard } from "@/components/salon/SalonCard";
+import { StarInput } from "@/components/ui/StarRating";
 import { PageFade } from "@/components/motion";
 import { cn } from "@/lib/utils";
 

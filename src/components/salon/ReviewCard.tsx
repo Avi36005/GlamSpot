@@ -3,8 +3,8 @@
 import { BadgeCheck } from "lucide-react";
 import { motion } from "motion/react";
 import type { ReviewDTO } from "@/lib/types";
-import { StarRating } from "./StarRating";
-import { Badge } from "./ui";
+import { StarRating } from "@/components/ui/StarRating";
+import { Badge } from "@/components/ui";
 
 function initials(name: string) {
   return name

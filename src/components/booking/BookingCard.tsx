@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import { Calendar, Clock, User as UserIcon } from "lucide-react";
 import type { BookingDTO } from "@/lib/types";
 import { formatINR, formatDateLong, formatTime12 } from "@/lib/utils";
-import { StatusBadge } from "./ui";
+import { StatusBadge } from "@/components/ui";
 
 export function BookingCard({
   booking,

@@ -19,7 +19,7 @@ import { LOCALITIES } from "@/lib/constants";
 import { EASE_EXPO, Magnetic } from "@/components/motion";
 import dynamic from "next/dynamic";
 
-const ThreeGLHero = dynamic(() => import("@/components/ThreeGLHero"), {
+const ThreeGLHero = dynamic(() => import("@/components/3d/ThreeGLHero"), {
   ssr: false,
 });
 

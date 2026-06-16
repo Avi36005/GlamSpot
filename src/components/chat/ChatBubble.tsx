@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { Sparkles } from "lucide-react";
 import type { SalonDTO } from "@/lib/types";
-import { SalonCardCompact } from "./SalonCard";
+import { SalonCardCompact } from "@/components/salon/SalonCard";
 import { cn } from "@/lib/utils";
 
 export function ChatBubble({

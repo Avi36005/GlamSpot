@@ -6,8 +6,8 @@ import { ArrowRight, BadgeCheck, Zap, Wand2, Home as HomeIcon } from "lucide-rea
 import { getSalons, getDeals } from "@/lib/data";
 import { Hero } from "@/components/home/Hero";
 import { DealCard } from "@/components/home/DealCard";
-import { CategoryChips } from "@/components/CategoryChips";
-import { SalonCard } from "@/components/SalonCard";
+import { CategoryChips } from "@/components/salon/CategoryChips";
+import { SalonCard } from "@/components/salon/SalonCard";
 import {
   Reveal,
   MaskText,

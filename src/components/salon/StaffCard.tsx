@@ -4,7 +4,7 @@ import Image from "next/image";
 import { User } from "lucide-react";
 import { motion } from "motion/react";
 import type { StaffDTO } from "@/lib/types";
-import { Badge } from "./ui";
+import { Badge } from "@/components/ui";
 
 export function StaffCard({ staff, index = 0 }: { staff: StaffDTO; index?: number }) {
   return (

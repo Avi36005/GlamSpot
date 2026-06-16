@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Sparkles, Send, Zap } from "lucide-react";
 import type { ChatMessage, SalonDTO } from "@/lib/types";
-import { ChatBubble, TypingBubble } from "@/components/ChatBubble";
+import { ChatBubble, TypingBubble } from "@/components/chat/ChatBubble";
 
 type Msg = ChatMessage & { salons?: SalonDTO[] };
 

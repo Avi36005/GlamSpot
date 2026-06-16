@@ -6,8 +6,8 @@ import { motion } from "motion/react";
 import { Upload, Sparkles, RefreshCw } from "lucide-react";
 import type { StyleResult } from "@/lib/types";
 import { recommendStyle } from "@/lib/api";
-import { AIStyleCard, ColourSwatch } from "@/components/AIStyleCard";
-import { SalonCard } from "@/components/SalonCard";
+import { AIStyleCard, ColourSwatch } from "@/components/salon/AIStyleCard";
+import { SalonCard } from "@/components/salon/SalonCard";
 import { PageFade, Reveal } from "@/components/motion";
 
 export default function StyleAIPage() {
