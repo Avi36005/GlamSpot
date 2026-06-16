@@ -20,8 +20,7 @@ export function ServiceCard({
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-20px" }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94], delay: (index % 6) * 0.04 }}
       whileHover={{ y: -3 }}
       className="flex items-center justify-between gap-4 rounded-xl border border-line bg-white p-4 transition-all duration-300 hover:border-accent/20 hover:shadow-[var(--shadow-card)]"

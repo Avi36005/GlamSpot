@@ -27,8 +27,7 @@ export function ReviewCard({ review, index = 0 }: { review: ReviewDTO; index?: n
   return (
     <motion.div
       initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10px" }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94], delay: (index % 4) * 0.05 }}
       whileHover={{ y: -2 }}
       className="rounded-xl border border-line bg-white p-4 transition-all duration-300 hover:border-accent/15 hover:shadow-[var(--shadow-card)]"
