@@ -19,13 +19,21 @@ export type SalonFilters = {
   limit?: number;
 };
 
+function caseInsensitiveFilter(value: string) {
+  const isPostgres = process.env.DATABASE_URL?.startsWith("postgres") || process.env.DATABASE_URL?.startsWith("postgresql");
+  return {
+    contains: value,
+    ...(isPostgres ? { mode: "insensitive" } : {}),
+  } as any;
+}
+
 function buildWhereClause(filters: SalonFilters): Prisma.SalonWhereInput {
   const where: Prisma.SalonWhereInput = {};
 
   if (filters.locality?.length) {
     where.OR = filters.locality.flatMap((l) => [
-      { locality: { contains: l, mode: "insensitive" } },
-      { city: { contains: l, mode: "insensitive" } },
+      { locality: caseInsensitiveFilter(l) },
+      { city: caseInsensitiveFilter(l) },
     ]);
   }
 
@@ -40,16 +48,16 @@ function buildWhereClause(filters: SalonFilters): Prisma.SalonWhereInput {
   if (filters.q) {
     const q = filters.q.trim();
     const searchConditions: Prisma.SalonWhereInput[] = [
-      { name: { contains: q, mode: "insensitive" } },
-      { locality: { contains: q, mode: "insensitive" } },
-      { city: { contains: q, mode: "insensitive" } },
-      { address: { contains: q, mode: "insensitive" } },
+      { name: caseInsensitiveFilter(q) },
+      { locality: caseInsensitiveFilter(q) },
+      { city: caseInsensitiveFilter(q) },
+      { address: caseInsensitiveFilter(q) },
       {
         services: {
           some: {
             OR: [
-              { name: { contains: q, mode: "insensitive" } },
-              { category: { contains: q, mode: "insensitive" } }
+              { name: caseInsensitiveFilter(q) },
+              { category: caseInsensitiveFilter(q) }
             ]
           }
         }
