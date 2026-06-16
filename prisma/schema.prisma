@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  phone     String?
+  avatarUrl String?
+  createdAt DateTime @default(now())
+
+  bookings Booking[]
+  reviews  Review[]
+  saved    SavedSalon[]
+}
+
+model Salon {
+  id           String   @id @default(cuid())
+  name         String
+  slug         String   @unique
+  description  String
+  locality     String
+  address      String
+  city         String   @default("Mumbai")
+  lat          Float    @default(19.076)
+  lng          Float    @default(72.8777)
+  coverImage   String
+  gallery      String   @default("[]") // JSON array
+  avgRating    Float    @default(0)
+  totalReviews Int      @default(0)
+  verified     Boolean  @default(false)
+  openTime     Int      @default(9)  // hour 0-23
+  closeTime    Int      @default(21)
+  homeService  Boolean  @default(false)
+  priceFrom    Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  services Service[]
+  staff    Staff[]
+  reviews  Review[]
+  bookings Booking[]
+  saved    SavedSalon[]
+}
+
+model Service {
+  id          String  @id @default(cuid())
+  salonId     String
+  salon       Salon   @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  name        String
+  category    String  // hair, skin, nails, bridal, threading, waxing, spa
+  durationMins Int    @default(45)
+  price       Int
+  description String  @default("")
+
+  bookings Booking[]
+}
+
+model Staff {
+  id             String  @id @default(cuid())
+  salonId        String
+  salon          Salon   @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  name           String
+  avatarUrl      String?
+  specialisation String
+  bio            String  @default("")
+
+  bookings Booking[]
+}
+
+model Booking {
+  id            String   @id @default(cuid())
+  userId        String?
+  user          User?    @relation(fields: [userId], references: [id])
+  salonId       String
+  salon         Salon    @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  serviceId     String
+  service       Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  staffId       String?
+  staff         Staff?   @relation(fields: [staffId], references: [id])
+  customerName  String
+  customerEmail String
+  customerPhone String
+  date          String   // YYYY-MM-DD
+  time          String   // HH:mm
+  status        String   @default("confirmed") // pending, confirmed, completed, cancelled
+  totalPrice    Int      @default(0)
+  paymentMethod String   @default("pay_at_salon")
+  paymentStatus String   @default("pending")
+  notes         String   @default("")
+  createdAt     DateTime @default(now())
+
+  review Review?
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  bookingId String?  @unique
+  booking   Booking? @relation(fields: [bookingId], references: [id])
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  salonId   String
+  salon     Salon    @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  author    String
+  rating    Int
+  comment   String
+  photos    String   @default("[]")
+  verified  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model SavedSalon {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  salonId   String
+  salon     Salon    @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, salonId])
+}

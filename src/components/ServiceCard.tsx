@@ -1,0 +1,44 @@
+"use client";
+
+import { Clock, Sparkles } from "lucide-react";
+import Link from "next/link";
+import type { ServiceDTO } from "@/lib/types";
+import { formatINR } from "@/lib/utils";
+import { CATEGORY_ICONS } from "./CategoryChips";
+
+export function ServiceCard({
+  service,
+  salonId,
+}: {
+  service: ServiceDTO;
+  salonId: string;
+}) {
+  const Icon = CATEGORY_ICONS[service.category] ?? Sparkles;
+  return (
+    <div className="flex items-center justify-between gap-4 rounded-xl border border-line bg-white p-4 transition-shadow hover:shadow-[var(--shadow-card)]">
+      <div className="flex min-w-0 gap-3">
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-highlight text-accent">
+          <Icon size={18} strokeWidth={1.75} />
+        </span>
+        <div className="min-w-0">
+          <div className="font-medium text-ink">{service.name}</div>
+          {service.description && (
+            <p className="mt-0.5 line-clamp-1 text-sm text-muted">{service.description}</p>
+          )}
+          <div className="mt-1.5 flex items-center gap-3 text-xs text-muted">
+            <span className="inline-flex items-center gap-1">
+              <Clock size={12} /> {service.durationMins} min
+            </span>
+            <span className="price font-semibold text-ink">{formatINR(service.price)}</span>
+          </div>
+        </div>
+      </div>
+      <Link
+        href={`/book/${salonId}?service=${service.id}`}
+        className="shrink-0 rounded-[8px] border border-accent px-4 py-2 text-sm font-medium text-accent transition-colors hover:bg-accent hover:text-white active:scale-95"
+      >
+        Book
+      </Link>
+    </div>
+  );
+}

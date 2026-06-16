@@ -1,26 +1,260 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ink: #0a0a0a;
+  --color-accent: #c9184a;
+  --color-accent-dark: #a30f3a;
+  --color-surface: #fafaf8;
+  --color-muted: #525252;
+  --color-faint: #a3a3a3;
+  --color-line: #e8e8e4;
+  --color-highlight: #fff0f3;
+  --color-cream: #f4f1ec;
+
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-dmsans);
+  --font-mono: var(--font-dmmono);
+
+  --radius-btn: 8px;
+
+  --shadow-card: 0 1px 2px rgba(26, 26, 26, 0.04);
+  --shadow-lift: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafaf8;
+  --foreground: #1a1a1a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: var(--color-line);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  letter-spacing: -0.015em;
+}
+
+/* Headings above ~48px get tighter tracking + leading.
+   Playfair Display's lightest available weight is 400. */
+.heading-hero {
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-weight: 400;
+}
+
+/* Section eyebrow labels — DM Mono, uppercase, muted */
+.section-label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-faint);
+}
+
+/* Prices use the clean sans numerals with tabular spacing so digits
+   stay aligned and the zero reads clearly. */
+.price {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  letter-spacing: 0.01em;
+}
+
+/* Status badges — no colour fills, semantic borders only */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 7px;
+  border-radius: 4px;
+}
+.status-confirmed {
+  background: #fff;
+  border: 1px solid #0a0a0a;
+  color: #0a0a0a;
+}
+.status-pending {
+  background: #fff;
+  border: 1px solid #a3a3a3;
+  color: #525252;
+}
+.status-cancelled {
+  background: #fff;
+  border: 1px solid #e24b4a;
+  color: #a32d2d;
+}
+.status-completed {
+  background: #f5f5f5;
+  border: 1px solid transparent;
+  color: #a3a3a3;
+}
+
+/* Hide scrollbars on horizontal scroll rows */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+/* Shimmer for loading states */
+@keyframes shimmer {
+  0% { background-position: -468px 0; }
+  100% { background-position: 468px 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #efede9 0%, #f7f5f2 40%, #efede9 80%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+/* Slow zoom for hero imagery */
+@keyframes kenburns {
+  0% { transform: scale(1.05); }
+  100% { transform: scale(1.16); }
+}
+.animate-kenburns {
+  animation: kenburns 18s ease-out forwards;
+}
+
+/* Typing dots — gentle bounce */
+@keyframes typing-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-6px); opacity: 1; }
+}
+.typing-dot {
+  animation: typing-bounce 0.6s ease-in-out infinite both;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* 3D and Premium Glassmorphic utilities */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.glass-premium {
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.dark-glass-premium {
+  background: rgba(10, 10, 10, 0.65);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glow-accent {
+  box-shadow: 0 10px 40px -10px rgba(201, 24, 74, 0.25);
+}
+
+.glow-accent-hover:hover {
+  box-shadow: 0 15px 45px -5px rgba(201, 24, 74, 0.45);
+}
+
+.glow-card {
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-card:hover {
+  box-shadow: 0 20px 45px -10px rgba(10, 10, 10, 0.08), 0 0 15px -3px rgba(201, 24, 74, 0.12);
+  border-color: rgba(201, 24, 74, 0.3) !important;
+}
+
+/* Ambient Floating Blob */
+@keyframes float-ambient {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(40px, -60px) scale(1.08);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.92);
+  }
+}
+.animate-float-ambient {
+  animation: float-ambient 22s ease-in-out infinite;
+}
+
+/* Iridescent Shimmer Sweep */
+@keyframes iridescent-sweep {
+  0% {
+    background-position: -200% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+.iridescent-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.iridescent-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 300%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(201, 24, 74, 0.15) 45%,
+    rgba(255, 240, 243, 0.5) 50%,
+    rgba(201, 24, 74, 0.15) 55%,
+    rgba(255, 255, 255, 0.05) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: iridescent-sweep 3.5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  pointer-events: none;
+  mix-blend-mode: color-dodge;
+  z-index: 10;
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+
+
