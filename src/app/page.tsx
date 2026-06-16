@@ -17,6 +17,35 @@ import {
   Preloader,
 } from "@/components/motion";
 
+function BeforeAfterCard({ before, after, title, description }: { before: string; after: string; title: string; description: string }) {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] transition-all duration-300">
+      <div className="relative aspect-[4/3] w-full overflow-hidden group">
+        {/* After Image */}
+        <Image src={after} alt={`${title} After`} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
+        
+        {/* Before Image (slides out on hover) */}
+        <div className="absolute inset-0 w-1/2 overflow-hidden border-r-2 border-white transition-all duration-500 ease-out group-hover:w-0 z-10">
+          <div className="absolute inset-0 aspect-[4/3] w-[200%] max-w-none">
+            <Image src={before} alt={`${title} Before`} fill sizes="(max-width:768px) 200vw, 66vw" className="object-cover" />
+          </div>
+        </div>
+        
+        {/* Slider Indicator Handle */}
+        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none z-20 transition-all duration-500 ease-out group-hover:left-0 flex flex-col items-center gap-1">
+          <span className="bg-ink text-[9px] font-bold text-white px-2 py-0.5 rounded uppercase tracking-wider shadow">Before</span>
+          <span className="h-6 w-0.5 bg-white" />
+        </div>
+        <div className="absolute bottom-3 right-3 bg-accent text-[9px] font-bold text-white px-2.5 py-0.5 rounded uppercase tracking-wider shadow z-20">After</div>
+      </div>
+      <div className="p-4">
+        <h4 className="font-display font-bold text-ink">{title}</h4>
+        <p className="mt-1 text-xs text-muted leading-relaxed">{description}</p>
+      </div>
+    </div>
+  );
+}
+
 export default async function HomePage() {
   const [salons, deals] = await Promise.all([getSalons({ sort: "rating" }), getDeals()]);
   const trending = salons.slice(0, 8);
@@ -108,18 +137,44 @@ export default async function HomePage() {
                 and colours — then matches you with Mumbai salons that nail them.
               </p>
             </FadeIn>
+
+            {/* Visual AI Process Stepper */}
+            <div className="mt-8 grid grid-cols-3 gap-3 border-t border-white/10 pt-8 text-[11px] text-white/60">
+              <div className="space-y-1">
+                <div className="text-white font-semibold flex items-center gap-1.5">
+                  <span className="grid h-5 w-5 place-items-center rounded-full bg-accent text-white text-[9px] font-bold">1</span>
+                  Upload Selfie
+                </div>
+                <div>Simple smartphone snap</div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-white font-semibold flex items-center gap-1.5">
+                  <span className="grid h-5 w-5 place-items-center rounded-full bg-accent text-white text-[9px] font-bold">2</span>
+                  AI Face Scan
+                </div>
+                <div>Detects shape & tones</div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-white font-semibold flex items-center gap-1.5">
+                  <span className="grid h-5 w-5 place-items-center rounded-full bg-accent text-white text-[9px] font-bold">3</span>
+                  Match & Book
+                </div>
+                <div>Direct instant booking</div>
+              </div>
+            </div>
+
             <FadeIn delay={0.18}>
               <Magnetic className="mt-7 inline-block">
                 <Link
                   href="/style-ai"
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-medium text-white transition-colors hover:bg-accent-dark"
+                  className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-medium text-white transition-colors hover:bg-accent-dark cursor-pointer"
                 >
                   Try AI Style Match <ArrowRight size={16} />
                 </Link>
               </Magnetic>
             </FadeIn>
           </div>
-          <ImageReveal className="relative h-64 md:h-full md:min-h-[340px]">
+          <ImageReveal className="relative h-64 md:h-full md:min-h-[420px]">
             <Image
               src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1200&q=80"
               alt="AI style match"

@@ -79,13 +79,14 @@ export function Badge({
 }: {
   children: ReactNode;
   className?: string;
-  tone?: "default" | "rose" | "ink" | "neutral";
+  tone?: "default" | "rose" | "ink" | "neutral" | "accent";
 }) {
   const tones = {
     // Category tags on cards — white bg, light border, neutral text
     default: "border border-line bg-white text-muted rounded-[4px]",
     neutral: "border border-line bg-white text-muted rounded-[4px]",
     rose: "bg-highlight text-accent rounded-full",
+    accent: "bg-accent text-white rounded-full",
     ink: "bg-ink text-white rounded-full",
   };
   return (

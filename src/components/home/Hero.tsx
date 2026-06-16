@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRouter } from "next/navigation";
 import { useRef, useState, useEffect } from "react";
-import { Search, MapPin, ChevronDown, Sparkles } from "lucide-react";
+import { Search, MapPin, ChevronDown, Sparkles, Flame, Paintbrush, Crown } from "lucide-react";
 import { LOCALITIES } from "@/lib/constants";
 import { EASE_EXPO, Magnetic } from "@/components/motion";
 import dynamic from "next/dynamic";
@@ -20,6 +20,33 @@ const HERO_VIDEO =
 
 const LINE1 = ["Mumbai’s", "Most", "Beautiful", "Salons,"];
 const LINE2 = ["One", "Tap", "Away"];
+
+function AnimatedCounter({ value, duration = 1.2, suffix = "" }: { value: number; duration?: number; suffix?: string }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const end = value;
+    if (start === end) return;
+
+    const totalMiliseconds = duration * 1000;
+    const incrementTime = Math.max(Math.floor(totalMiliseconds / end), 25);
+
+    const timer = setInterval(() => {
+      start += Math.ceil(end / (totalMiliseconds / incrementTime));
+      if (start >= end) {
+        clearInterval(timer);
+        setCount(end);
+      } else {
+        setCount(start);
+      }
+    }, incrementTime);
+
+    return () => clearInterval(timer);
+  }, [value, duration]);
+
+  return <span>{count.toLocaleString()}{suffix}</span>;
+}
 
 /** A single word that rises from behind a clip mask. */
 function MaskWord({
@@ -169,9 +196,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE_EXPO, delay: subDelay }}
-          className="mt-5 max-w-xl text-lg text-white/85"
+          className="mt-5 max-w-xl text-lg font-medium text-white/95"
         >
-          Discover, book, and experience the best beauty in your neighbourhood.
+          Find salons, artists & beauty services near you
         </motion.p>
 
         {/* Search bar with glassmorphic panel & glowing accents */}
@@ -180,18 +207,21 @@ export function Hero() {
           animate={{
             opacity: 1,
             y: 0,
-            scale: focused ? 1.005 : 1,
+            scale: focused ? 1.02 : 1,
           }}
           transition={{
             opacity: { duration: 0.6, ease: EASE_EXPO, delay: subDelay + 0.12 },
             y: { duration: 0.6, ease: EASE_EXPO, delay: subDelay + 0.12 },
-            scale: { duration: 0.2, ease: "easeOut" },
+            scale: { duration: 0.25, ease: "easeOut" },
           }}
           style={{
-            borderColor: focused ? "rgba(201, 24, 74, 0.5)" : "rgba(255, 255, 255, 0.25)",
+            borderColor: focused ? "#C9184A" : "rgba(255, 255, 255, 0.25)",
             borderWidth: 1.5,
+            boxShadow: focused
+              ? "0 0 25px rgba(201, 24, 74, 0.35), 0 20px 40px rgba(0, 0, 0, 0.3)"
+              : "0 10px 30px rgba(0, 0, 0, 0.2)",
           }}
-          className="mt-9 w-full max-w-3xl rounded-2xl glass-premium p-2 shadow-2xl md:flex md:items-center md:gap-2 glow-accent hover:border-white/45 transition-colors"
+          className="mt-8 w-full max-w-3xl rounded-2xl glass-premium p-2 md:flex md:items-center md:gap-2 transition-all duration-300"
         >
           <div className="flex flex-1 items-center gap-2 px-3 py-2">
             <Search size={18} className="text-muted" />
@@ -233,22 +263,63 @@ export function Hero() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.96 }}
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
-              className="w-full rounded-xl bg-accent px-7 py-3.5 font-medium uppercase tracking-[0.04em] text-white transition-colors hover:bg-accent-dark"
+              className="w-full rounded-xl bg-accent px-7 py-3.5 font-medium uppercase tracking-[0.04em] text-white transition-colors hover:bg-accent-dark cursor-pointer"
             >
               Search
             </motion.button>
           </Magnetic>
         </motion.div>
 
+        {/* Trending Searches */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: subDelay + 0.2 }}
+          className="mt-4 flex flex-wrap items-center gap-2 text-xs text-white/90"
+        >
+          <span className="font-medium">Trending:</span>
+          {[
+            { label: "Keratin Treatment", query: "Keratin Treatment", icon: Flame },
+            { label: "Gel Nails", query: "Gel Nails", icon: Paintbrush },
+            { label: "Bridal Makeup", query: "Bridal Makeup", icon: Crown },
+            { label: "Hair Spa", query: "Hair Spa", icon: Sparkles },
+          ].map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.query}
+                onClick={() => {
+                  setService(item.query);
+                  const sp = new URLSearchParams();
+                  sp.set("q", item.query);
+                  if (locality && locality !== "All Mumbai") sp.set("locality", locality);
+                  router.push(`/search?${sp.toString()}`);
+                }}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 hover:bg-white/25 hover:border-white/40 transition-all cursor-pointer"
+              >
+                <Icon size={12} className="text-highlight" />
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
+        </motion.div>
+
+        {/* Animated Statistics Counters */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: subDelay + 0.3 }}
-          className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/75"
+          className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/85"
         >
-          <span>&#10022; 8 verified salons</span>
-          <span>&#10022; 10 Mumbai localities</span>
-          <span>&#10022; Instant booking</span>
+          <span className="inline-flex items-center gap-1">
+            ✦ <AnimatedCounter value={54} /> Verified Salons
+          </span>
+          <span className="inline-flex items-center gap-1">
+            ✦ <AnimatedCounter value={21} /> Localities
+          </span>
+          <span className="inline-flex items-center gap-1">
+            ✦ <AnimatedCounter value={5000} suffix="+" /> Bookings
+          </span>
         </motion.div>
       </motion.div>
 

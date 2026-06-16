@@ -27,7 +27,7 @@ export function LocalityMultiSelect({
           className="w-full rounded-lg border border-line bg-white py-2 pl-8 pr-3 text-sm outline-none focus:border-accent"
         />
       </div>
-      <div className="max-h-44 space-y-0.5 overflow-y-auto pr-1">
+      <div className="max-h-44 space-y-0.5 overflow-y-auto pr-1" data-lenis-prevent>
         {filtered.map((o) => {
           const checked = selected.includes(o);
           return (

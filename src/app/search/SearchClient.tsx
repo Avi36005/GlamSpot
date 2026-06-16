@@ -287,7 +287,7 @@ export function SearchClient() {
               <div className="h-[600px] overflow-hidden rounded-2xl border border-line">
                 <SalonMap salons={salons} />
               </div>
-              <div className="no-scrollbar hidden max-h-[600px] space-y-2 overflow-y-auto lg:block">
+              <div className="no-scrollbar hidden max-h-[600px] space-y-2 overflow-y-auto lg:block" data-lenis-prevent>
                 {salons.map((s) => (
                   <SalonCardCompact key={s.id} salon={s} />
                 ))}
@@ -314,6 +314,7 @@ export function SearchClient() {
               exit={{ y: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
               className="fixed inset-x-0 bottom-0 z-50 max-h-[85vh] overflow-y-auto rounded-t-3xl bg-surface p-5 lg:hidden"
+              data-lenis-prevent
             >
               <div className="mb-4 flex items-center justify-between">
                 <h2 className="font-display text-xl font-semibold">Filters</h2>
