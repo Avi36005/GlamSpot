@@ -47,7 +47,7 @@ export function Navbar() {
             GlamSpot
           </span>
           <span className="hidden text-xs font-medium uppercase tracking-[0.2em] text-muted sm:inline">
-            Mumbai
+            Live
           </span>
         </Link>
 

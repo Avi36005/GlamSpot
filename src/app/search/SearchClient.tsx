@@ -33,6 +33,7 @@ export function SearchClient() {
   const [homeService, setHomeService] = useState(false);
   const [sort, setSort] = useState("relevance");
   const [q, setQ] = useState("");
+  const [searchVal, setSearchVal] = useState("");
 
   const [view, setView] = useState<"grid" | "map">("grid");
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -48,7 +49,10 @@ export function SearchClient() {
     if (params.get("home_service") === "true") setHomeService(true);
     if (params.get("open_now") === "true") setOpenNow(true);
     if (params.get("sort")) setSort(params.get("sort")!);
-    if (params.get("q")) setQ(params.get("q")!);
+    if (params.get("q")) {
+      setQ(params.get("q")!);
+      setSearchVal(params.get("q")!);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -89,17 +93,40 @@ export function SearchClient() {
     setOpenNow(false);
     setHomeService(false);
     setQ("");
+    setSearchVal("");
   };
 
   const Filters = (
     <div className="space-y-7">
-      {q && (
-        <FilterBlock title="Search">
-          <div className="flex items-center justify-between rounded-lg bg-highlight px-3 py-2 text-sm text-accent">
-            “{q}” <button onClick={() => setQ("")}><X size={14} /></button>
-          </div>
-        </FilterBlock>
-      )}
+      <FilterBlock title="Search">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setQ(searchVal);
+          }}
+          className="relative flex items-center gap-2 rounded-lg border border-line bg-white px-3 py-1.5"
+        >
+          <input
+            type="text"
+            placeholder="Search city, salon, service..."
+            value={searchVal}
+            onChange={(e) => setSearchVal(e.target.value)}
+            className="w-full bg-transparent text-sm text-ink outline-none placeholder:text-muted"
+          />
+          {searchVal && (
+            <button
+              type="button"
+              onClick={() => {
+                setSearchVal("");
+                setQ("");
+              }}
+              className="text-muted hover:text-ink"
+            >
+              <X size={14} />
+            </button>
+          )}
+        </form>
+      </FilterBlock>
       <FilterBlock title="Locality">
         <LocalityMultiSelect
           options={LOCALITIES}
@@ -176,7 +203,7 @@ export function SearchClient() {
       <div className="mb-6">
         <h1 className="font-display text-3xl font-bold text-ink">Discover Salons</h1>
         <p className="mt-1 text-muted">
-          {loading ? "Finding salons…" : `${salons.length} salons found in Mumbai`}
+          {loading ? "Finding salons…" : `${salons.length} salons found`}
         </p>
       </div>
 

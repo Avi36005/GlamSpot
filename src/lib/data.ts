@@ -26,7 +26,11 @@ export async function getSalons(filters: SalonFilters = {}): Promise<SalonDTO[]>
 
   if (filters.locality?.length) {
     result = result.filter((s) =>
-      filters.locality!.some((l) => s.locality.toLowerCase().includes(l.toLowerCase()))
+      filters.locality!.some(
+        (l) =>
+          s.locality.toLowerCase().includes(l.toLowerCase()) ||
+          s.city.toLowerCase().includes(l.toLowerCase())
+      )
     );
   }
   if (filters.category?.length) {
@@ -40,6 +44,8 @@ export async function getSalons(filters: SalonFilters = {}): Promise<SalonDTO[]>
       (s) =>
         s.name.toLowerCase().includes(q) ||
         s.locality.toLowerCase().includes(q) ||
+        s.city.toLowerCase().includes(q) ||
+        s.address.toLowerCase().includes(q) ||
         s.categories.some((c) => c.includes(q)) ||
         (s.services ?? []).some((sv) => sv.name.toLowerCase().includes(q))
     );
