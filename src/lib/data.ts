@@ -3,6 +3,7 @@ import { prisma } from "./prisma";
 import { serializeSalon } from "./serialize";
 import type { SalonDTO, BookingDTO, ReviewDTO } from "./types";
 import { addMinutesToTime, seededRandom } from "./utils";
+import { Prisma } from "@prisma/client";
 
 export type SalonFilters = {
   locality?: string[];
@@ -14,77 +15,121 @@ export type SalonFilters = {
   homeService?: boolean;
   sort?: string;
   q?: string;
+  page?: number;
+  limit?: number;
 };
 
-export async function getSalons(filters: SalonFilters = {}): Promise<SalonDTO[]> {
-  const salons = await prisma.salon.findMany({
-    include: { services: true },
-    orderBy: { avgRating: "desc" },
-  });
-
-  let result = salons.map(serializeSalon);
+function buildWhereClause(filters: SalonFilters): Prisma.SalonWhereInput {
+  const where: Prisma.SalonWhereInput = {};
 
   if (filters.locality?.length) {
-    result = result.filter((s) =>
-      filters.locality!.some(
-        (l) =>
-          s.locality.toLowerCase().includes(l.toLowerCase()) ||
-          s.city.toLowerCase().includes(l.toLowerCase())
-      )
-    );
+    where.OR = filters.locality.flatMap((l) => [
+      { locality: { contains: l, mode: "insensitive" } },
+      { city: { contains: l, mode: "insensitive" } },
+    ]);
   }
+
   if (filters.category?.length) {
-    result = result.filter((s) =>
-      s.categories.some((c) => filters.category!.includes(c))
-    );
+    where.services = {
+      some: {
+        category: { in: filters.category },
+      },
+    };
   }
+
   if (filters.q) {
-    const q = filters.q.toLowerCase();
-    result = result.filter(
-      (s) =>
-        s.name.toLowerCase().includes(q) ||
-        s.locality.toLowerCase().includes(q) ||
-        s.city.toLowerCase().includes(q) ||
-        s.address.toLowerCase().includes(q) ||
-        s.categories.some((c) => c.includes(q)) ||
-        (s.services ?? []).some((sv) => sv.name.toLowerCase().includes(q))
-    );
+    const q = filters.q.trim();
+    const searchConditions: Prisma.SalonWhereInput[] = [
+      { name: { contains: q, mode: "insensitive" } },
+      { locality: { contains: q, mode: "insensitive" } },
+      { city: { contains: q, mode: "insensitive" } },
+      { address: { contains: q, mode: "insensitive" } },
+      {
+        services: {
+          some: {
+            OR: [
+              { name: { contains: q, mode: "insensitive" } },
+              { category: { contains: q, mode: "insensitive" } }
+            ]
+          }
+        }
+      }
+    ];
+
+    if (where.OR) {
+      where.AND = [
+        { OR: where.OR },
+        { OR: searchConditions }
+      ];
+      delete where.OR;
+    } else {
+      where.OR = searchConditions;
+    }
   }
-  if (typeof filters.priceMin === "number") {
-    result = result.filter((s) => s.priceFrom >= filters.priceMin!);
+
+  if (typeof filters.priceMin === "number" || typeof filters.priceMax === "number") {
+    where.priceFrom = {
+      ...(typeof filters.priceMin === "number" ? { gte: filters.priceMin } : {}),
+      ...(typeof filters.priceMax === "number" ? { lte: filters.priceMax } : {}),
+    };
   }
-  if (typeof filters.priceMax === "number") {
-    result = result.filter((s) => s.priceFrom <= filters.priceMax!);
+
+  if (typeof filters.minRating === "number") {
+    where.avgRating = { gte: filters.minRating };
   }
-  if (filters.minRating) {
-    result = result.filter((s) => s.avgRating >= filters.minRating!);
-  }
+
   if (filters.homeService) {
-    result = result.filter((s) => s.homeService);
+    where.homeService = true;
   }
+
   if (filters.openNow) {
     const h = new Date().getHours();
-    result = result.filter((s) => h >= s.openTime && h < s.closeTime);
+    where.openTime = { lte: h };
+    where.closeTime = { gt: h };
   }
+
+  return where;
+}
+
+export async function getSalons(filters: SalonFilters = {}): Promise<SalonDTO[]> {
+  const where = buildWhereClause(filters);
+
+  let orderBy: Prisma.SalonOrderByWithRelationInput | Prisma.SalonOrderByWithRelationInput[] = { avgRating: "desc" };
 
   switch (filters.sort) {
     case "price_asc":
-      result.sort((a, b) => a.priceFrom - b.priceFrom);
+      orderBy = { priceFrom: "asc" };
       break;
     case "price_desc":
-      result.sort((a, b) => b.priceFrom - a.priceFrom);
+      orderBy = { priceFrom: "desc" };
       break;
     case "rating":
-      result.sort((a, b) => b.avgRating - a.avgRating);
+      orderBy = { avgRating: "desc" };
       break;
     default:
-      // relevance: featured-ish = verified + rating
-      result.sort(
-        (a, b) => Number(b.verified) * 0.3 + b.avgRating - (Number(a.verified) * 0.3 + a.avgRating)
-      );
+      orderBy = [
+        { verified: "desc" },
+        { avgRating: "desc" },
+      ];
   }
 
-  return result;
+  const take = filters.limit;
+  const skip = filters.page && filters.limit ? (filters.page - 1) * filters.limit : undefined;
+
+  const salons = await prisma.salon.findMany({
+    where,
+    orderBy,
+    include: { services: true },
+    ...(take !== undefined ? { take } : {}),
+    ...(skip !== undefined ? { skip } : {}),
+  });
+
+  return salons.map(serializeSalon);
+}
+
+export async function getSalonsCount(filters: SalonFilters = {}): Promise<number> {
+  const where = buildWhereClause(filters);
+  return prisma.salon.count({ where });
 }
 
 export async function getSalon(id: string): Promise<SalonDTO | null> {
@@ -115,15 +160,10 @@ export async function getSalonReviews(
   }));
 }
 
-/**
- * Slot generation is derived (no slots table): generate the salon's daily grid,
- * then mark slots booked if a confirmed booking exists, plus a deterministic
- * "pre-booked" pattern (~30%) for realism.
- */
-export async function getSlots(salonId: string, date: string, serviceId?: string) {
+export async function getSlots(salonId: string, date: string, serviceId?: string, staffId?: string) {
   const salon = await prisma.salon.findUnique({
     where: { id: salonId },
-    include: { services: true },
+    include: { services: true, staff: true },
   });
   if (!salon) return [];
 
@@ -135,7 +175,6 @@ export async function getSlots(salonId: string, date: string, serviceId?: string
   const bookings = await prisma.booking.findMany({
     where: { salonId, date, status: { in: ["pending", "confirmed"] } },
   });
-  const bookedTimes = new Set(bookings.map((b) => b.time));
 
   const isPast = date < new Date().toISOString().slice(0, 10);
   const nowH = new Date().getHours();
@@ -143,11 +182,25 @@ export async function getSlots(salonId: string, date: string, serviceId?: string
 
   const slots: { time: string; available: boolean }[] = [];
   let t = `${String(salon.openTime).padStart(2, "0")}:00`;
+  const totalStaffCount = salon.staff.length || 1;
+
   while (parseInt(t) < salon.closeTime) {
     const rand = seededRandom(`${salonId}-${date}-${t}`);
-    const preBooked = rand < 0.3;
+    const preBooked = rand < 0.2; // 20% organic pre-booked fallback for visual realism
     const past = isPast || (isToday && parseInt(t) <= nowH);
-    const available = !preBooked && !bookedTimes.has(t) && !past;
+    
+    let available = !past;
+
+    if (available) {
+      if (staffId) {
+        const isStaffBooked = bookings.some((b) => b.staffId === staffId && b.time === t);
+        available = !isStaffBooked && !preBooked;
+      } else {
+        const activeBookingsCount = bookings.filter((b) => b.time === t).length;
+        available = activeBookingsCount < totalStaffCount && !preBooked;
+      }
+    }
+
     slots.push({ time: t, available });
     t = addMinutesToTime(t, step);
   }
@@ -157,11 +210,17 @@ export async function getSlots(salonId: string, date: string, serviceId?: string
 export async function getDeals(): Promise<
   { salon: SalonDTO; serviceName: string; original: number; deal: number; expiresInMin: number }[]
 > {
-  const salons = await prisma.salon.findMany({ include: { services: true } });
-  const picks = salons.slice(0, 3);
-  return picks.map((s, i) => {
+  const salons = await prisma.salon.findMany({
+    take: 3,
+    include: { services: true },
+    orderBy: [
+      { verified: "desc" },
+      { avgRating: "desc" },
+    ],
+  });
+  return salons.map((s, i) => {
     const dto = serializeSalon(s);
-    const svc = s.services[i % s.services.length];
+    const svc = s.services[i % s.services.length] || { name: "Special Service", price: 500 };
     const original = svc.price;
     const deal = Math.round((original * (i === 0 ? 0.6 : i === 1 ? 0.7 : 0.75)) / 10) * 10;
     return {

@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -47,6 +47,12 @@ model Salon {
   reviews  Review[]
   bookings Booking[]
   saved    SavedSalon[]
+
+  @@index([city])
+  @@index([locality])
+  @@index([avgRating])
+  @@index([priceFrom])
+  @@index([verified])
 }
 
 model Service {
@@ -60,6 +66,10 @@ model Service {
   description String  @default("")
 
   bookings Booking[]
+
+  @@index([salonId])
+  @@index([category])
+  @@index([price])
 }
 
 model Staff {
@@ -72,6 +82,8 @@ model Staff {
   bio            String  @default("")
 
   bookings Booking[]
+
+  @@index([salonId])
 }
 
 model Booking {
@@ -97,6 +109,11 @@ model Booking {
   createdAt     DateTime @default(now())
 
   review Review?
+
+  @@index([userId])
+  @@index([salonId])
+  @@index([date])
+  @@index([status])
 }
 
 model Review {
@@ -113,6 +130,9 @@ model Review {
   photos    String   @default("[]")
   verified  Boolean  @default(true)
   createdAt DateTime @default(now())
+
+  @@index([salonId])
+  @@index([userId])
 }
 
 model SavedSalon {

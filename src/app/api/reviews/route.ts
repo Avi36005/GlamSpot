@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { getSessionUser } from "@/lib/auth";
 
 export async function POST(req: NextRequest) {
+  const user = await getSessionUser(req);
+  if (!user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const body = await req.json();
-  const { booking_id, salon_id, rating, comment, photos = [], user_id = "demo-user" } = body ?? {};
+  const { booking_id, salon_id, rating, comment, photos = [] } = body ?? {};
 
   if (!salon_id || !rating) {
     return NextResponse.json({ error: "salon_id and rating required" }, { status: 400 });
@@ -16,14 +22,19 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  const user = await prisma.user.findUnique({ where: { id: user_id } });
+  // Ensure user exists (demo flow)
+  const dbUser = await prisma.user.upsert({
+    where: { id: user.id },
+    update: {},
+    create: { id: user.id, name: user.name || "Guest", email: user.email },
+  });
 
   const review = await prisma.review.create({
     data: {
       bookingId: booking_id || null,
-      userId: user ? user_id : null,
+      userId: dbUser.id,
       salonId: salon_id,
-      author: user?.name ?? "Guest",
+      author: dbUser.name || "Guest",
       rating: Number(rating),
       comment: comment || "",
       photos: JSON.stringify(photos),

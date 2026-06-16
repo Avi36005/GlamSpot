@@ -224,9 +224,9 @@ export function SalonCard({ salon, index = 0 }: { salon: SalonDTO; index?: numbe
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 20 }}>
               <Link
                 href={`/book/${salon.id}`}
-                className="block rounded-lg bg-accent px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-accent-dark shadow-sm hover:shadow-md cursor-pointer"
+                className="block rounded-lg bg-accent px-5 py-2.5 text-xs font-semibold tracking-wide text-white transition-colors hover:bg-accent-dark shadow-sm hover:shadow-md cursor-pointer"
               >
-                BOOK IN 10 SEC
+                Book Now
               </Link>
             </motion.div>
           </div>

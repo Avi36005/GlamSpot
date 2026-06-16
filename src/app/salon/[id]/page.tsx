@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { notFound } from "next/navigation";
 import { getSalon, getSalonReviews } from "@/lib/data";
 import { SalonDetail } from "./SalonDetail";

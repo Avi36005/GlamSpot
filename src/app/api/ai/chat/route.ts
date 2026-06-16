@@ -4,6 +4,7 @@ import { GLAMBOT_SYSTEM } from "@/lib/ai";
 import { LOCALITIES, CATEGORIES } from "@/lib/constants";
 import type { SalonDTO, ChatMessage } from "@/lib/types";
 import { formatINR } from "@/lib/utils";
+import { fetchGroqChatStream } from "@/lib/groq";
 
 export const runtime = "nodejs";
 
@@ -62,32 +63,14 @@ export async function POST(req: NextRequest) {
   const salons = await matchSalons(query);
 
   const encoder = new TextEncoder();
-  const useGroq = !!process.env.GROQ_API_KEY;
+  const useGroq = !!(process.env.GROQ_API_KEYS || process.env.GROQ_API_KEY);
 
   const stream = new ReadableStream({
     async start(controller) {
       const send = (o: unknown) => controller.enqueue(encoder.encode(sse(o)));
       try {
         if (useGroq) {
-          const res = await fetch(
-            "https://api.groq.com/openai/v1/chat/completions",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
-              },
-              body: JSON.stringify({
-                model: "llama-3.3-70b-versatile",
-                stream: true,
-                temperature: 0.6,
-                messages: [
-                  { role: "system", content: GLAMBOT_SYSTEM },
-                  ...messages,
-                ],
-              }),
-            }
-          );
+          const res = await fetchGroqChatStream(messages);
           const reader = res.body?.getReader();
           const decoder = new TextDecoder();
           let buffer = "";

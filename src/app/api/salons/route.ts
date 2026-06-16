@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSalons } from "@/lib/data";
+import { getSalons, getSalonsCount } from "@/lib/data";
 import { syncGoogleSalons } from "@/lib/google-places";
 
 export async function GET(req: NextRequest) {
@@ -10,17 +10,19 @@ export async function GET(req: NextRequest) {
   const q = sp.get("q") ?? undefined;
   const localities = list("locality");
 
+  // Run Google Places sync in the background without blocking the query response
   if (q || (localities && localities.length > 0)) {
-    try {
-      const syncQ = q ?? "";
-      const syncLoc = localities && localities.length > 0 ? localities[0] : undefined;
-      await syncGoogleSalons(syncQ, syncLoc);
-    } catch (e) {
-      console.error("Live Google sync failed:", e);
-    }
+    const syncQ = q ?? "";
+    const syncLoc = localities && localities.length > 0 ? localities[0] : undefined;
+    syncGoogleSalons(syncQ, syncLoc).catch((e) => {
+      console.error("Live Google sync background error:", e);
+    });
   }
 
-  const salons = await getSalons({
+  const page = Math.max(1, Number(sp.get("page") ?? 1));
+  const limit = Math.max(1, Number(sp.get("limit") ?? 12));
+
+  const filterParams = {
     locality: localities,
     category: list("category"),
     q,
@@ -30,18 +32,20 @@ export async function GET(req: NextRequest) {
     openNow: sp.get("open_now") === "true",
     homeService: sp.get("home_service") === "true",
     sort: sp.get("sort") ?? "relevance",
-  });
-
-  const page = Math.max(1, Number(sp.get("page") ?? 1));
-  const limit = Math.max(1, Number(sp.get("limit") ?? 12));
-  const start = (page - 1) * limit;
-  const paged = salons.slice(start, start + limit);
-
-  return NextResponse.json({
-    salons: paged,
-    total: salons.length,
     page,
     limit,
-    hasMore: start + limit < salons.length,
+  };
+
+  const [pagedSalons, totalCount] = await Promise.all([
+    getSalons(filterParams),
+    getSalonsCount(filterParams),
+  ]);
+
+  return NextResponse.json({
+    salons: pagedSalons,
+    total: totalCount,
+    page,
+    limit,
+    hasMore: (page - 1) * limit + pagedSalons.length < totalCount,
   });
 }

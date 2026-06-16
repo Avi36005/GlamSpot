@@ -1,4 +1,5 @@
 import { prisma } from "./prisma";
+import { cacheGet, cacheSet } from "./cache";
 
 function slugify(s: string) {
   return s
@@ -37,6 +38,12 @@ export async function syncGoogleSalons(q: string, locality?: string) {
   }
 
   if (searchQuery.length < 3) return;
+
+  const cacheKey = `google-sync:${searchQuery.toLowerCase()}`;
+  if (cacheGet(cacheKey)) {
+    console.log(`[Google Places] Cache hit for query: "${searchQuery}". Skipping API sync.`);
+    return;
+  }
 
   console.log(`[Google Places] Syncing salons for query: "${searchQuery}"`);
 
@@ -306,6 +313,7 @@ export async function syncGoogleSalons(q: string, locality?: string) {
         }
       })
     );
+    cacheSet(cacheKey, true, 86400); // sync complete, cache for 24h
   } catch (err) {
     console.error("Error in syncGoogleSalons:", err);
   }

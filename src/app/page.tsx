@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, BadgeCheck, Zap, Wand2, Home as HomeIcon } from "lucide-react";
