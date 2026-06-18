@@ -175,11 +175,23 @@ export default function Dashboard() {
                   (saved.length === 0 ? (
                     <Empty text="No saved salons yet." />
                   ) : (
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                      {saved.map((s, i) => (
-                        <SalonCard key={s.id} salon={s} index={i} />
-                      ))}
-                    </div>
+                    <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                      <AnimatePresence mode="popLayout">
+                        {saved.map((s, i) => (
+                          <motion.div
+                            key={s.id}
+                            layout
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ duration: 0.25 }}
+                            className="h-full"
+                          >
+                            <SalonCard salon={s} index={i} />
+                          </motion.div>
+                        ))}
+                      </AnimatePresence>
+                    </motion.div>
                   ))}
                 {tab === "profile" && <Profile />}
               </motion.div>

@@ -79,7 +79,9 @@ export default async function HomePage() {
         <div className="no-scrollbar -mx-5 flex gap-5 overflow-x-auto px-5 pb-4 lg:mx-0 lg:grid lg:grid-cols-4 lg:overflow-visible lg:px-0">
           {trending.map((s, i) => (
             <div key={s.id} className="w-[280px] shrink-0 lg:w-auto">
-              <SalonCard salon={s} index={i} />
+              <Reveal delay={i * 0.05} y={15} className="h-full">
+                <SalonCard salon={s} index={i} />
+              </Reveal>
             </div>
           ))}
         </div>

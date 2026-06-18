@@ -281,11 +281,23 @@ export function SearchClient() {
                 </button>
               </div>
             ) : (
-              <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                {salons.map((s, i) => (
-                  <SalonCard key={s.id} salon={s} index={i} />
-                ))}
-              </div>
+              <motion.div layout className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                <AnimatePresence mode="popLayout">
+                  {salons.map((s, i) => (
+                    <motion.div
+                      key={s.id}
+                      layout
+                      initial={{ opacity: 0, scale: 0.92, y: 12 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.92, y: 12 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      className="h-full"
+                    >
+                      <SalonCard salon={s} index={i} />
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </motion.div>
             )
           ) : (
             <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
@@ -293,9 +305,20 @@ export function SearchClient() {
                 <SalonMap salons={salons} />
               </div>
               <div className="no-scrollbar hidden max-h-[600px] space-y-2 overflow-y-auto lg:block" data-lenis-prevent>
-                {salons.map((s) => (
-                  <SalonCardCompact key={s.id} salon={s} />
-                ))}
+                <AnimatePresence mode="popLayout">
+                  {salons.map((s) => (
+                    <motion.div
+                      key={s.id}
+                      layout
+                      initial={{ opacity: 0, x: 15 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -15 }}
+                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <SalonCardCompact salon={s} />
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
               </div>
             </div>
           )}
@@ -308,10 +331,10 @@ export function SearchClient() {
           <>
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              animate={{ opacity: 0.4 }}
               exit={{ opacity: 0 }}
               onClick={() => setSheetOpen(false)}
-              className="fixed inset-0 z-50 bg-ink/40 lg:hidden"
+              className="fixed inset-0 z-45 bg-black"
             />
             <motion.div
               initial={{ y: "100%" }}
@@ -365,14 +388,16 @@ function Toggle({
         type="button"
         onClick={() => onChange(!checked)}
         className={cn(
-          "relative h-6 w-10 rounded-full transition-colors",
+          "relative h-6 w-10 rounded-full transition-colors duration-200",
           checked ? "bg-accent" : "bg-line"
         )}
       >
-        <span
+        <motion.span
+          layout
+          transition={{ type: "spring", stiffness: 500, damping: 30 }}
           className={cn(
-            "absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform",
-            checked ? "translate-x-[18px]" : "translate-x-0.5"
+            "absolute top-0.5 h-5 w-5 rounded-full bg-white shadow",
+            checked ? "right-0.5" : "left-0.5"
           )}
         />
       </button>
