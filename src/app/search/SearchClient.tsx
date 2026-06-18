@@ -97,7 +97,7 @@ export function SearchClient() {
   };
 
   const Filters = (
-    <div className="space-y-7">
+    <div className="space-y-7 pb-6">
       <FilterBlock title="Search">
         <form
           onSubmit={(e) => {
