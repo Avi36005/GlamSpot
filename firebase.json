@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "glamspot-mumbai",
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

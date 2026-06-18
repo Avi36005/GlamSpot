@@ -57,7 +57,7 @@ function verifyFirebaseIdToken(token: string, projectId: string): AuthUser | nul
  * Falls back to the 'demo-user' account if Firebase is not configured in environment.
  */
 export async function getSessionUser(req: NextRequest): Promise<AuthUser | null> {
-  const projectId = process.env.FIREBASE_PROJECT_ID;
+  const projectId = process.env.FB_PROJECT_ID;
 
   // Enforce token validation only if Firebase configuration is active
   if (projectId) {
