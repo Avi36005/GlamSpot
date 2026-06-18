@@ -10,6 +10,7 @@ import { CategoryChips } from "@/components/salon/CategoryChips";
 import { SalonCard } from "@/components/salon/SalonCard";
 import { AiPromoCard } from "@/components/home/AiPromoCard";
 import { HomeServiceCard } from "@/components/home/HomeServiceCard";
+import { TiltCard } from "@/components/motion/TiltCard";
 import {
   Reveal,
   MaskText,
@@ -158,14 +159,27 @@ export default async function HomePage() {
                 desc: "Personalised recommendations powered by Gemini, Groq and GPT-4o.",
               },
             ].map((f, i) => (
-              <Reveal key={f.title} delay={i * 0.08}>
-                <div className="h-full rounded-2xl border border-line bg-white p-7 transition-shadow hover:shadow-[var(--shadow-card)]">
-                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-highlight text-accent">
+              <Reveal key={f.title} delay={i * 0.08} className="h-full">
+                <TiltCard className="group flex h-full flex-col justify-start rounded-2xl border border-line bg-white p-7 hover:shadow-[var(--shadow-card)] transition-shadow preserve-3d">
+                  <span
+                    className="grid h-12 w-12 place-items-center rounded-xl bg-highlight text-accent preserve-3d transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+                    style={{ transform: "translateZ(20px)" }}
+                  >
                     <f.icon size={22} />
                   </span>
-                  <h3 className="mt-5 font-sans text-xl font-bold text-ink">{f.title}</h3>
-                  <p className="mt-2 leading-relaxed text-muted">{f.desc}</p>
-                </div>
+                  <h3
+                    className="mt-5 font-sans text-xl font-bold text-ink transition-colors group-hover:text-accent"
+                    style={{ transform: "translateZ(25px)" }}
+                  >
+                    {f.title}
+                  </h3>
+                  <p
+                    className="mt-2 leading-relaxed text-muted"
+                    style={{ transform: "translateZ(15px)" }}
+                  >
+                    {f.desc}
+                  </p>
+                </TiltCard>
               </Reveal>
             ))}
           </div>
