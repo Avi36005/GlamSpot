@@ -43,7 +43,7 @@ function BeforeAfterCard({ before, after, title, description }: { before: string
         <div className="absolute bottom-3 right-3 bg-accent text-[9px] font-bold text-white px-2.5 py-0.5 rounded uppercase tracking-wider shadow z-20">After</div>
       </div>
       <div className="p-4">
-        <h4 className="font-display font-bold text-ink">{title}</h4>
+        <h4 className="font-sans font-bold text-ink">{title}</h4>
         <p className="mt-1 text-xs text-muted leading-relaxed">{description}</p>
       </div>
     </div>
@@ -161,7 +161,7 @@ export default async function HomePage() {
                   <span className="grid h-12 w-12 place-items-center rounded-xl bg-highlight text-accent">
                     <f.icon size={22} />
                   </span>
-                  <h3 className="mt-5 font-display text-xl font-semibold text-ink">{f.title}</h3>
+                  <h3 className="mt-5 font-sans text-xl font-bold text-ink">{f.title}</h3>
                   <p className="mt-2 leading-relaxed text-muted">{f.desc}</p>
                 </div>
               </Reveal>

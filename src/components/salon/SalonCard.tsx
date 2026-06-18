@@ -162,7 +162,7 @@ export function SalonCard({ salon, index = 0 }: { salon: SalonDTO; index?: numbe
 
         <div className="flex flex-1 flex-col p-5 preserve-3d" style={{ transform: "translateZ(20px)" }}>
           <div className="flex items-start justify-between gap-2" style={{ transform: "translateZ(25px)" }}>
-            <h3 className="font-display text-[18px] font-bold leading-tight text-ink group-hover:text-accent transition-colors">
+            <h3 className="font-sans text-[16px] font-bold leading-snug text-ink group-hover:text-accent transition-colors">
               <Link href={`/salon/${salon.id}`}>
                 {salon.name}
               </Link>
@@ -219,7 +219,7 @@ export function SalonCard({ salon, index = 0 }: { salon: SalonDTO; index?: numbe
 
           <div className="mt-5 flex items-center justify-between border-t border-line pt-4 preserve-3d" style={{ transform: "translateZ(25px)" }}>
             <div className="text-xs text-muted">
-              from <span className="price font-display text-[17px] font-bold text-ink">{formatINR(salon.priceFrom)}</span>
+              from <span className="price font-sans text-[16px] font-bold text-ink">{formatINR(salon.priceFrom)}</span>
             </div>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 20 }}>
               <Link
@@ -246,7 +246,7 @@ export function SalonCardCompact({ salon }: { salon: SalonDTO }) {
         <Image src={salon.coverImage} alt={salon.name} fill sizes="64px" className="object-cover" />
       </div>
       <div className="min-w-0 flex-1">
-        <div className="truncate font-display text-sm font-semibold text-ink">{salon.name}</div>
+        <div className="truncate font-sans text-sm font-bold text-ink">{salon.name}</div>
         <div className="text-xs text-muted">{salon.locality}</div>
         <div className="mt-1 flex items-center gap-2">
           <span className="text-xs text-amber-600 font-bold flex items-center gap-0.5">

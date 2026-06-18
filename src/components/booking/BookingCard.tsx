@@ -46,7 +46,7 @@ export function BookingCard({
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-2">
           <div>
-            <h3 className="font-display text-base font-semibold text-ink transition-colors group-hover:text-accent">
+            <h3 className="font-sans text-base font-bold text-ink transition-colors group-hover:text-accent">
               {booking.salonName}
             </h3>
             <p className="text-sm text-muted">{booking.serviceName}</p>

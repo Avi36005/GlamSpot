@@ -25,7 +25,7 @@ export function AIStyleCard({
           <span className="text-xs font-semibold text-accent">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <h4 className="font-display text-base font-semibold text-ink">{name}</h4>
+          <h4 className="font-sans text-base font-bold text-ink">{name}</h4>
         </div>
         <p className="mt-1 text-sm leading-relaxed text-muted" style={{ transform: "translateZ(20px)" }}>
           {reason}

@@ -63,7 +63,7 @@ export function DealCard({
         </span>
       </div>
       <div className="p-4 preserve-3d" style={{ transform: "translateZ(20px)" }}>
-        <h3 className="font-display text-base font-semibold text-ink" style={{ transform: "translateZ(25px)" }}>{salon.name}</h3>
+        <h3 className="font-sans text-base font-bold text-ink" style={{ transform: "translateZ(25px)" }}>{salon.name}</h3>
         <p className="text-sm text-muted" style={{ transform: "translateZ(22px)" }}>{salon.locality} · {serviceName}</p>
         <div className="mt-3 flex items-end justify-between preserve-3d" style={{ transform: "translateZ(24px)" }}>
           <div className="flex items-baseline gap-2">

@@ -30,7 +30,7 @@ export function StaffCard({ staff, index = 0 }: { staff: StaffDTO; index?: numbe
           </span>
         )}
       </div>
-      <h4 className="mt-3 font-display text-base font-semibold text-ink transition-colors group-hover:text-accent">
+      <h4 className="mt-3 font-sans text-base font-bold text-ink transition-colors group-hover:text-accent">
         {staff.name}
       </h4>
       <Badge tone="rose" className="mt-1.5">
