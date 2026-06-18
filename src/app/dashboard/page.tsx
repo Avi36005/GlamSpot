@@ -59,33 +59,85 @@ export default function Dashboard() {
   return (
     <PageFade>
       <div className="mx-auto max-w-5xl px-5 py-10 lg:px-8">
-        <div className="flex items-center gap-4">
-          <span className="grid h-14 w-14 place-items-center rounded-full border-2 border-ink bg-ink text-xl font-semibold text-white">
-            AK
-          </span>
-          <div>
-            <h1 className="font-display text-[32px] font-medium leading-none text-ink">Hello, Aanya</h1>
-            <p className="mt-1.5 text-sm text-muted">aanya@glamspot.in</p>
+        {/* User Card */}
+        <div className="rounded-3xl border border-line bg-white p-6 shadow-[var(--shadow-card)] flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <span className="grid h-16 w-16 place-items-center rounded-full bg-accent/10 text-xl font-semibold text-accent border border-accent/20 select-none">
+              AK
+            </span>
+            <div>
+              <h1 className="font-display text-2xl font-bold text-ink">Hello, Aanya</h1>
+              <p className="text-sm text-muted">aanya@glamspot.in</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-6 md:gap-12 border-t md:border-t-0 md:border-l border-line pt-4 md:pt-0 md:pl-8">
+            <div>
+              <div className="text-[10px] uppercase tracking-wider text-muted font-mono">Bookings</div>
+              <div className="text-xl font-bold text-ink mt-0.5">{upcoming.length + past.length}</div>
+            </div>
+            <div>
+              <div className="text-[10px] uppercase tracking-wider text-muted font-mono">Saved</div>
+              <div className="text-xl font-bold text-ink mt-0.5">{saved.length}</div>
+            </div>
+            <div>
+              <div className="text-[10px] uppercase tracking-wider text-muted font-mono">Tier</div>
+              <div className="text-[10px] font-semibold text-accent mt-1 bg-highlight px-2 py-0.5 rounded border border-accent/10 w-fit">Gold Member</div>
+            </div>
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className="no-scrollbar mt-8 flex gap-1 overflow-x-auto border-b border-line">
-          {TABS.map((t) => (
-            <button
-              key={t.key}
-              onClick={() => setTab(t.key)}
-              className={cn(
-                "relative flex items-center gap-2 whitespace-nowrap px-4 py-3 text-sm font-medium transition-colors",
-                tab === t.key ? "text-accent" : "text-muted hover:text-ink"
-              )}
-            >
-              <t.icon size={15} /> {t.label}
-              {tab === t.key && (
-                <motion.span layoutId="dash-underline" className="absolute inset-x-2 -bottom-px h-0.5 rounded bg-accent" />
-              )}
-            </button>
-          ))}
+        {/* Navigation Banner (matching the layout from the right image, blended with rose/pink theme) */}
+        <div className="mt-8 bg-accent rounded-full p-2 pl-4 pr-2 flex items-center justify-between shadow-md select-none overflow-hidden max-w-4xl mx-auto">
+          {/* Left: Brand logo/initial avatar representing account */}
+          <div className="flex items-center gap-2.5">
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-white font-display text-accent font-bold text-base shadow-sm">
+              G
+            </span>
+            <span className="hidden sm:inline font-mono text-[9px] uppercase tracking-widest text-white/90">
+              GlamSpot
+            </span>
+          </div>
+
+          {/* Center: Tabs with Framer Motion slide highlights */}
+          <div className="flex items-center gap-1">
+            {TABS.map((t) => {
+              const active = tab === t.key;
+              return (
+                <button
+                  key={t.key}
+                  onClick={() => setTab(t.key)}
+                  className={cn(
+                    "relative flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer select-none",
+                    active
+                      ? "text-accent font-bold"
+                      : "text-white/80 hover:text-white hover:bg-white/5"
+                  )}
+                >
+                  {/* Sliding Background Pill */}
+                  {active && (
+                    <motion.span
+                      layoutId="active-dashboard-tab"
+                      className="absolute inset-0 -z-0 rounded-full bg-white shadow-sm"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <t.icon size={13} className="relative z-10 shrink-0" />
+                  <span className="relative z-10 hidden md:inline">{t.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right: Premium button matching the "Discover More ↗" button from the right image */}
+          <Link
+            href="/search"
+            className="bg-white rounded-full pl-5 pr-1.5 py-1.5 flex items-center gap-2 hover:bg-cream/90 active:scale-95 transition-all text-xs font-semibold text-accent shadow-sm shrink-0"
+          >
+            <span>Discover More</span>
+            <span className="grid h-6 w-6 place-items-center rounded-full bg-accent text-white shadow-inner">
+              <span className="text-[10px] font-bold">↗</span>
+            </span>
+          </Link>
         </div>
 
         <div className="mt-8">
@@ -179,7 +231,7 @@ function Empty({ text }: { text: string }) {
   return (
     <div className="rounded-2xl border border-dashed border-line bg-white p-14 text-center">
       <p className="text-ink">{text}</p>
-      <Link href="/search" className="mt-3 inline-block text-sm font-medium text-accent">
+      <Link href="/search" className="mt-3 inline-block text-sm font-medium text-accent hover:underline">
         Discover salons →
       </Link>
     </div>
@@ -190,7 +242,7 @@ function Profile() {
   return (
     <div className="max-w-lg space-y-4 rounded-2xl border border-line bg-white p-6">
       <div className="flex items-center gap-4">
-        <span className="grid h-16 w-16 place-items-center rounded-full bg-ink text-xl font-semibold text-white">AK</span>
+        <span className="grid h-16 w-16 place-items-center rounded-full bg-accent text-xl font-semibold text-white">AK</span>
         <button className="rounded-[8px] border border-line px-4 py-2 text-sm font-medium hover:bg-cream">
           Change photo
         </button>
@@ -199,7 +251,7 @@ function Profile() {
       <Field label="Phone" defaultValue="+91 98765 43210" />
       <Field label="Email (from sign-in)" defaultValue="aanya@glamspot.in" readOnly />
       <div className="flex gap-3 pt-2">
-        <button className="rounded-[8px] bg-accent px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-dark">
+        <button className="rounded-[8px] bg-accent px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-dark transition-colors">
           Save Changes
         </button>
         <button className="inline-flex items-center gap-2 rounded-[8px] border border-line px-5 py-2.5 text-sm font-medium hover:bg-cream">
@@ -290,7 +342,7 @@ function ReviewModal({
         <button
           onClick={save}
           disabled={saving}
-          className="mt-4 w-full rounded-[8px] bg-accent py-3 font-medium text-white hover:bg-accent-dark disabled:opacity-50"
+          className="mt-4 w-full rounded-[8px] bg-accent py-3 font-medium text-white hover:bg-accent-dark transition-colors disabled:opacity-50"
         >
           {saving ? "Submitting…" : "Submit Review"}
         </button>

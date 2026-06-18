@@ -210,7 +210,12 @@ export function SearchClient() {
       <div className="flex gap-8">
         {/* Sidebar */}
         <aside className="hidden w-[280px] shrink-0 lg:block">
-          <div className="sticky top-20 rounded-2xl border border-line bg-white p-5">{Filters}</div>
+          <div 
+            className="sticky top-20 max-h-[calc(100vh-120px)] overflow-y-auto no-scrollbar rounded-2xl border border-line bg-white p-5"
+            data-lenis-prevent
+          >
+            {Filters}
+          </div>
         </aside>
 
         {/* Main */}

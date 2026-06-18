@@ -10,6 +10,9 @@
   --color-line: #e8e8e4;
   --color-highlight: #fff0f3;
   --color-cream: #f4f1ec;
+  --color-caramel: #c58f68;
+  --color-caramel-dark: #b07e59;
+  --color-caramel-light: #f6efe9;
 
   --font-display: var(--font-playfair);
   --font-sans: var(--font-dmsans);

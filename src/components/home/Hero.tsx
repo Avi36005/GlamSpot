@@ -154,7 +154,6 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
   const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "28%"]);
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.18]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "26%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
@@ -170,16 +169,12 @@ export function Hero() {
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden">
-      {/* Background video + cinematic slow zoom */}
+      {/* Background video without zoom */}
       <motion.div
-        style={{ y: videoY, scale: videoScale }}
+        style={{ y: videoY }}
         className="absolute inset-0 z-0"
       >
-        <motion.div
-          animate={{ scale: [1, 1.05] }}
-          transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
-          className="h-full w-full"
-        >
+        <div className="h-full w-full">
           <video
             className="h-full w-full object-cover"
             autoPlay
@@ -190,9 +185,9 @@ export function Hero() {
           >
             <source src={HERO_VIDEO} type="video/mp4" />
           </video>
-        </motion.div>
+        </div>
         {/* Lighter gradient overlay for luxury feel */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/50 to-black/65" />
       </motion.div>
 
       {/* Interactive WebGL 3D Particle and Orb Scene */}
@@ -308,18 +303,18 @@ export function Hero() {
           </Magnetic>
         </motion.div>
 
-        {/* Subtle AI CTA — replaces the floating card */}
+        {/* Premium Glassy AI CTA */}
         <motion.a
           href="/style-ai"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: subDelay + 0.25 }}
-          className="mt-3 inline-flex w-fit items-center gap-1.5 text-[13px] text-white/70 hover:text-white transition-colors group"
+          className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-4 py-1.5 text-xs text-white/90 hover:bg-accent/20 hover:border-accent/40 transition-all duration-300 shadow-sm backdrop-blur-sm group cursor-pointer"
         >
-          <Sparkles size={12} className="text-highlight" />
+          <Sparkles size={13} className="text-highlight animate-pulse" />
           <span>Not sure what suits you?</span>
-          <span className="font-medium text-highlight group-hover:underline inline-flex items-center gap-0.5">
-            Try AI Style Match <ArrowRight size={12} className="transition-transform group-hover:translate-x-0.5" />
+          <span className="font-semibold text-highlight inline-flex items-center gap-0.5">
+            Try AI Style Match <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
           </span>
         </motion.a>
 
@@ -349,27 +344,25 @@ export function Hero() {
           })}
         </motion.div>
 
-        {/* Stats — single clean line with animated counters and vector icons */}
+        {/* Stats — premium glassy capsules */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: subDelay + 0.4 }}
-          className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm text-white/80"
+          className="mt-10 flex flex-wrap gap-3.5 text-xs select-none"
         >
-          <span className="inline-flex items-center gap-1.5">
-            <BadgeCheck size={14} className="text-highlight shrink-0" />
-            <strong className="text-white"><AnimatedCounter value={54} /></strong> Verified Salons
-          </span>
-          <span className="text-white/30">•</span>
-          <span className="inline-flex items-center gap-1.5">
-            <MapPin size={14} className="text-highlight shrink-0" />
-            <strong className="text-white"><AnimatedCounter value={21} /></strong> Localities
-          </span>
-          <span className="text-white/30">•</span>
-          <span className="inline-flex items-center gap-1.5">
-            <Star size={14} className="text-highlight shrink-0" />
-            <strong className="text-white"><AnimatedCounter value={5000} suffix="+" /></strong> Bookings
-          </span>
+          <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-md shadow-sm transition-all hover:bg-white/10 hover:border-white/20 text-white/90">
+            <BadgeCheck size={14} className="text-accent shrink-0" />
+            <span><strong className="text-white text-sm"><AnimatedCounter value={54} /></strong> Verified Salons</span>
+          </div>
+          <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-md shadow-sm transition-all hover:bg-white/10 hover:border-white/20 text-white/90">
+            <MapPin size={14} className="text-accent shrink-0" />
+            <span><strong className="text-white text-sm"><AnimatedCounter value={21} /></strong> Localities</span>
+          </div>
+          <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-md shadow-sm transition-all hover:bg-white/10 hover:border-white/20 text-white/90">
+            <Star size={14} className="text-accent shrink-0" />
+            <span><strong className="text-white text-sm"><AnimatedCounter value={5000} suffix="+" /></strong> Bookings</span>
+          </div>
         </motion.div>
       </motion.div>
 

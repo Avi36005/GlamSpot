@@ -51,7 +51,8 @@ export function Navbar() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
+        {/* Center Links wrapped in a Rose-Pink Pill */}
+        <div className="hidden items-center gap-1 md:flex bg-accent rounded-full px-2 py-1 shadow-md border border-accent-dark/5">
           {links.map((l) => (
             <Link
               key={l.href}
@@ -59,17 +60,17 @@ export function Navbar() {
               onMouseEnter={() => setHoveredLink(l.href)}
               onMouseLeave={() => setHoveredLink(null)}
               className={cn(
-                "relative rounded-full px-4 py-2 text-[13px] tracking-[0.02em] transition-colors duration-200",
+                "relative rounded-full px-4 py-1.5 text-[13px] tracking-wider uppercase font-bold transition-colors duration-200",
                 pathname.startsWith(l.href)
-                  ? "font-medium text-accent"
-                  : "font-normal text-[#404040] hover:text-ink"
+                  ? "text-white"
+                  : "text-white/80 hover:text-white"
               )}
             >
               {/* Active Background Pill */}
               {pathname.startsWith(l.href) && (
                 <motion.span
                   layoutId="active-nav"
-                  className="absolute inset-0 -z-10 rounded-full bg-highlight"
+                  className="absolute inset-0 -z-10 rounded-full bg-white/20"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
@@ -77,7 +78,7 @@ export function Navbar() {
               {hoveredLink === l.href && !pathname.startsWith(l.href) && (
                 <motion.span
                   layoutId="hover-nav"
-                  className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-accent"
+                  className="absolute bottom-1 left-4 right-4 h-[1.5px] rounded-full bg-white/60"
                   transition={{ type: "spring", stiffness: 350, damping: 25 }}
                 />
               )}
@@ -86,6 +87,7 @@ export function Navbar() {
           ))}
         </div>
 
+        {/* Right Side Buttons */}
         <div className="hidden items-center gap-3 md:flex">
           <Link
             href="/chat"
@@ -96,12 +98,13 @@ export function Navbar() {
           </Link>
           <Link
             href="/dashboard"
-            className="flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-ink/90"
+            className="flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-ink/90 active:scale-95 shadow-sm"
           >
-            <User size={15} /> Account
+            <User size={14} /> Account
           </Link>
         </div>
 
+        {/* Mobile menu trigger */}
         <button
           className="grid h-10 w-10 place-items-center rounded-full text-ink md:hidden"
           onClick={() => setOpen((o) => !o)}
@@ -111,6 +114,7 @@ export function Navbar() {
         </button>
       </nav>
 
+      {/* Mobile menu dropdown */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -125,9 +129,9 @@ export function Navbar() {
                   key={l.href}
                   href={l.href}
                   className={cn(
-                    "rounded-xl px-4 py-3 text-sm font-medium",
+                    "rounded-xl px-4 py-3 text-sm font-medium transition-colors",
                     pathname.startsWith(l.href)
-                      ? "bg-highlight text-accent"
+                      ? "bg-accent/10 text-accent font-semibold"
                       : "text-ink hover:bg-ink/[0.04]"
                   )}
                 >
@@ -136,7 +140,7 @@ export function Navbar() {
               ))}
               <Link
                 href="/dashboard"
-                className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-ink px-4 py-3 text-sm font-medium text-white"
+                className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-ink px-4 py-3 text-sm font-medium text-white hover:bg-ink/90"
               >
                 <User size={15} /> Account
               </Link>

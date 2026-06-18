@@ -8,6 +8,8 @@ import { Hero } from "@/components/home/Hero";
 import { DealCard } from "@/components/home/DealCard";
 import { CategoryChips } from "@/components/salon/CategoryChips";
 import { SalonCard } from "@/components/salon/SalonCard";
+import { AiPromoCard } from "@/components/home/AiPromoCard";
+import { HomeServiceCard } from "@/components/home/HomeServiceCard";
 import {
   Reveal,
   MaskText,
@@ -120,118 +122,16 @@ export default async function HomePage() {
 
       {/* AI Style Match promo */}
       <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
-        <div className="grid items-center gap-10 overflow-hidden rounded-3xl border border-line bg-ink text-white md:grid-cols-2">
-          <div className="p-8 lg:p-12">
-            <FadeIn>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-highlight">
-                <Wand2 size={13} /> AI Style Match
-              </span>
-            </FadeIn>
-            <MaskText
-              as="h2"
-              className="mt-5 font-display text-3xl font-medium leading-tight lg:text-4xl"
-            >
-              Find the look that was made for you
-            </MaskText>
-            <FadeIn delay={0.1}>
-              <p className="mt-4 max-w-md text-white/70">
-                Upload a selfie and our AI reads your face shape to recommend hairstyles
-                and colours — then matches you with Mumbai salons that nail them.
-              </p>
-            </FadeIn>
-
-            {/* Visual AI Process Stepper */}
-            <div className="mt-8 grid grid-cols-3 gap-3 border-t border-white/10 pt-8 text-[11px] text-white/60">
-              <div className="space-y-1">
-                <div className="text-white font-semibold flex items-center gap-1.5">
-                  <span className="grid h-5 w-5 place-items-center rounded-full bg-accent text-white text-[9px] font-bold">1</span>
-                  Upload Selfie
-                </div>
-                <div>Simple smartphone snap</div>
-              </div>
-              <div className="space-y-1">
-                <div className="text-white font-semibold flex items-center gap-1.5">
-                  <span className="grid h-5 w-5 place-items-center rounded-full bg-accent text-white text-[9px] font-bold">2</span>
-                  AI Face Scan
-                </div>
-                <div>Detects shape & tones</div>
-              </div>
-              <div className="space-y-1">
-                <div className="text-white font-semibold flex items-center gap-1.5">
-                  <span className="grid h-5 w-5 place-items-center rounded-full bg-accent text-white text-[9px] font-bold">3</span>
-                  Match & Book
-                </div>
-                <div>Direct instant booking</div>
-              </div>
-            </div>
-
-            <FadeIn delay={0.18}>
-              <Magnetic className="mt-7 inline-block">
-                <Link
-                  href="/style-ai"
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-medium text-white transition-colors hover:bg-accent-dark cursor-pointer"
-                >
-                  Try AI Style Match <ArrowRight size={16} />
-                </Link>
-              </Magnetic>
-            </FadeIn>
-          </div>
-          <ImageReveal className="relative h-64 md:h-full md:min-h-[420px]">
-            <Image
-              src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1200&q=80"
-              alt="AI style match"
-              fill
-              sizes="(max-width:768px) 100vw, 50vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-ink/60 to-transparent" />
-          </ImageReveal>
-        </div>
+        <Reveal>
+          <AiPromoCard />
+        </Reveal>
       </section>
 
       {/* Home service banner */}
       <section className="mx-auto max-w-7xl px-5 pb-20 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl">
-          <ImageReveal>
-            <Image
-              src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=1600&q=80"
-              alt="Home service"
-              width={1600}
-              height={600}
-              className="h-72 w-full object-cover md:h-80"
-            />
-          </ImageReveal>
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/50 to-transparent" />
-          <div className="absolute inset-0 flex flex-col justify-center p-8 lg:p-14">
-            <FadeIn>
-              <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-white backdrop-blur">
-                <HomeIcon size={13} /> Home Service
-              </span>
-            </FadeIn>
-            <MaskText
-              as="h2"
-              className="mt-4 max-w-md font-display text-3xl font-medium text-white lg:text-4xl"
-            >
-              Beauty at Your Doorstep
-            </MaskText>
-            <FadeIn delay={0.1}>
-              <p className="mt-3 max-w-md text-white/80">
-                Skip the traffic. Book trusted stylists who come to you, across Mumbai&apos;s
-                suburbs and beyond.
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.18}>
-              <Magnetic className="mt-6 inline-block">
-                <Link
-                  href="/search?home_service=true"
-                  className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 font-medium text-ink"
-                >
-                  Explore Home Services <ArrowRight size={16} />
-                </Link>
-              </Magnetic>
-            </FadeIn>
-          </div>
-        </div>
+        <Reveal>
+          <HomeServiceCard />
+        </Reveal>
       </section>
 
       {/* Why GlamSpot */}
