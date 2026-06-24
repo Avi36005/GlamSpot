@@ -156,7 +156,7 @@ export default async function HomePage() {
               {
                 icon: Wand2,
                 title: "AI Style Match",
-                desc: "Personalised recommendations powered by Gemini, Groq and GPT-4o.",
+                desc: "Personalised recommendations powered by Gemini and Groq.",
               },
             ].map((f, i) => (
               <Reveal key={f.title} delay={i * 0.08} className="h-full">

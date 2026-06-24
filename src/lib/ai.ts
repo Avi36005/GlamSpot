@@ -1,5 +1,6 @@
 import "server-only";
 import type { ReviewSummary } from "./types";
+import { fetchGroqCompletion } from "./groq";
 
 /**
  * AI provider layer.
@@ -11,8 +12,7 @@ import type { ReviewSummary } from "./types";
 
 export const aiStatus = () => ({
   gemini: !!process.env.GEMINI_API_KEY,
-  groq: !!process.env.GROQ_API_KEY,
-  openai: !!process.env.OPENAI_API_KEY,
+  groq: !!(process.env.GROQ_API_KEYS || process.env.GROQ_API_KEY),
 });
 
 function extractJson<T>(text: string): T | null {
@@ -26,7 +26,7 @@ function extractJson<T>(text: string): T | null {
 }
 
 /* ------------------------------------------------------------------ */
-/* Review summary — OpenAI GPT-4o (fallback: heuristic)               */
+/* Review summary — Groq Llama 3.3 70B (fallback: heuristic)          */
 /* ------------------------------------------------------------------ */
 
 export async function summarizeReviews(
@@ -35,33 +35,22 @@ export async function summarizeReviews(
 ): Promise<ReviewSummary | null> {
   if (reviews.length < 3) return null;
 
-  if (process.env.OPENAI_API_KEY) {
+  if (process.env.GROQ_API_KEYS || process.env.GROQ_API_KEY) {
     try {
       const reviewsText = reviews
         .map((r, i) => `${i + 1}. (${r.rating}/5) ${r.comment}`)
         .join("\n");
       const prompt = `You are summarising reviews for ${salonName}, a beauty salon in Mumbai. Here are ${reviews.length} customer reviews:\n${reviewsText}\n\nProduce a summary with exactly 3 sections. Return ONLY valid JSON: { "best_for": [string, string], "strengths": [string, string], "watch_out": [string] }. Each item is a short phrase (max 8 words). Be honest and balanced.`;
-      const res = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: "gpt-4o",
-          messages: [{ role: "user", content: prompt }],
-          temperature: 0.4,
-          response_format: { type: "json_object" },
-        }),
-      });
-      const data = await res.json();
-      const text = data?.choices?.[0]?.message?.content ?? "";
-      const parsed = extractJson<Omit<ReviewSummary, "source">>(text);
+      const text = await fetchGroqCompletion(
+        [{ role: "user", content: prompt }],
+        { temperature: 0.4, jsonMode: true }
+      );
+      const parsed = text ? extractJson<Omit<ReviewSummary, "source">>(text) : null;
       if (parsed?.best_for && parsed?.strengths && parsed?.watch_out) {
         return { ...parsed, source: "ai" };
       }
     } catch (e) {
-      console.error("OpenAI review summary failed, using fallback", e);
+      console.error("Groq review summary failed, using fallback", e);
     }
   }
 

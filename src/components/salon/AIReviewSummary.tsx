@@ -55,7 +55,7 @@ export function AIReviewSummary({ salonId }: { salonId: string }) {
           <h3 className="font-display text-base font-semibold text-ink">AI Review Summary</h3>
         </div>
         <span className="text-[10px] font-medium uppercase tracking-wider text-accent/70">
-          {data.source === "ai" ? "GPT-4o" : "Auto-generated"}
+          {data.source === "ai" ? "Llama 3.3 70B" : "Auto-generated"}
         </span>
       </div>
 
