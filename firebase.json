@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "glamspot-mumbai",
+    "site": "glamspot-mumbai-v2",
     "source": ".",
     "ignore": [
       "firebase.json",

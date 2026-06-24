@@ -57,6 +57,17 @@ Scripts: `npm run dev | build | start | db:seed | db:push | db:studio`
 
 ---
 
+## ☁️ Serverless & Firebase Deployment (GCP / Cloud Run)
+
+In serverless environments like Firebase App Hosting (which runs on Cloud Run), the root filesystem is read-only and lacks runtime execution/write permissions. To run full-stack Next.js with **Prisma + SQLite**, we implemented a specialized staging and synchronization system:
+
+1. **Dynamic Engine Loading:** On Cloud Run (`process.env.K_SERVICE`), the application dynamically copies the Prisma query engine binary from the build bundle to `/tmp/prisma-engines/`, grants it `0o755` executable permissions, and sets the `PRISMA_QUERY_ENGINE_LIBRARY` environment variable.
+2. **Writable SQLite Database:** The seed database (`prisma/dev.db`) is copied to the writable `/tmp/dev.db` directory at startup. Database URLs are dynamically redirected to this path to support CRUD operations in a read-only environment.
+3. **Build Staging & Stale-Prisma Fix:** The Next.js build configuration (`next.config.ts`) copy-stages the prisma schema and client files directly to the Firebase Functions staging directory, ensuring query engine versions match deployment environments.
+4. **Optimized Image CDN Delivery:** Bypasses Next.js on-demand image optimization (`unoptimized: true`) to prevent CPU spikes on Cloud Run, and registers remote patterns for Google Places and Unsplash CDNs.
+
+---
+
 ## 🗂️ Structure
 
 ```
